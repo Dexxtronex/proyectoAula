@@ -10,6 +10,7 @@ package modelo.entidadesDTO;
  * @author Dexx
  */
 public class paquetedias {
+    
     private int id;
     private String codigo;
     private boolean lunes;
