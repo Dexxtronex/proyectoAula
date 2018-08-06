@@ -165,7 +165,9 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jLabelNombrePasante = new javax.swing.JLabel();
         JTextFieldNombrePasante = new javax.swing.JTextField();
         JTextFieldNumeroParlantes = new javax.swing.JTextField();
-        jLabelNumeroComputadora1 = new javax.swing.JLabel();
+        jLabelNumeroParlantes = new javax.swing.JLabel();
+        JTextFieldNumeroMicrofonos = new javax.swing.JTextField();
+        jLabelNumeroMicrofonos = new javax.swing.JLabel();
         JTextFieldNombreHorario = new javax.swing.JTextField();
         jLabelNombreHorario = new javax.swing.JLabel();
 
@@ -469,7 +471,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jLabel7.setText("TIPO AULA");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 120, 30));
 
-        JComboBoxTipoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "....", "Aula Pequeño", "Aula Grande", "Laboratorio" }));
+        JComboBoxTipoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "....", "Aula Pequeño", "Aula Grande", "Laboratorio", "Auditorio" }));
         JComboBoxTipoAula.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JComboBoxTipoAulaItemStateChanged(evt);
@@ -544,6 +546,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         getContentPane().add(JComboBoxTipoHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, -1));
 
         jPanelAtributosExtras.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAtributosExtras.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JTextFieldNumeroComputadoras.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNumeroComputadoras.addActionListener(new java.awt.event.ActionListener() {
@@ -551,12 +554,15 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 JTextFieldNumeroComputadorasActionPerformed(evt);
             }
         });
+        jPanelAtributosExtras.add(JTextFieldNumeroComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 11, 260, -1));
 
         jLabelNumeroComputadora.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabelNumeroComputadora.setText("Numero Computadoras:");
+        jPanelAtributosExtras.add(jLabelNumeroComputadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 146, -1));
 
         jLabelNombrePasante.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabelNombrePasante.setText("Nombre Pasante");
+        jPanelAtributosExtras.add(jLabelNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
 
         JTextFieldNombrePasante.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNombrePasante.addActionListener(new java.awt.event.ActionListener() {
@@ -564,6 +570,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 JTextFieldNombrePasanteActionPerformed(evt);
             }
         });
+        jPanelAtributosExtras.add(JTextFieldNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
 
         JTextFieldNumeroParlantes.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNumeroParlantes.addActionListener(new java.awt.event.ActionListener() {
@@ -571,56 +578,25 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 JTextFieldNumeroParlantesActionPerformed(evt);
             }
         });
+        jPanelAtributosExtras.add(JTextFieldNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
 
-        jLabelNumeroComputadora1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabelNumeroComputadora1.setText("Numero Parlantes:");
+        jLabelNumeroParlantes.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroParlantes.setText("Numero Parlantes:");
+        jPanelAtributosExtras.add(jLabelNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, -1));
 
-        javax.swing.GroupLayout jPanelAtributosExtrasLayout = new javax.swing.GroupLayout(jPanelAtributosExtras);
-        jPanelAtributosExtras.setLayout(jPanelAtributosExtrasLayout);
-        jPanelAtributosExtrasLayout.setHorizontalGroup(
-            jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosExtrasLayout.createSequentialGroup()
-                        .addComponent(jLabelNumeroComputadora, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextFieldNumeroComputadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosExtrasLayout.createSequentialGroup()
-                        .addComponent(jLabelNumeroComputadora1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTextFieldNumeroParlantes, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelNombrePasante, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(31, 31, 31)
-                    .addComponent(JTextFieldNombrePasante, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanelAtributosExtrasLayout.setVerticalGroup(
-            jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNumeroComputadora)
-                    .addComponent(JTextFieldNumeroComputadoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNumeroComputadora1)
-                    .addComponent(JTextFieldNumeroParlantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelNombrePasante)
-                        .addComponent(JTextFieldNombrePasante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        JTextFieldNumeroMicrofonos.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNumeroMicrofonos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNumeroMicrofonosActionPerformed(evt);
+            }
+        });
+        jPanelAtributosExtras.add(JTextFieldNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
 
-        getContentPane().add(jPanelAtributosExtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 430, -1));
+        jLabelNumeroMicrofonos.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroMicrofonos.setText("Numero Microfonos:");
+        jPanelAtributosExtras.add(jLabelNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
+
+        getContentPane().add(jPanelAtributosExtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, 430, 90));
 
         JTextFieldNombreHorario.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNombreHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -1244,6 +1220,10 @@ paquetedias  momen ;
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldNumeroParlantesActionPerformed
 
+    private void JTextFieldNumeroMicrofonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroMicrofonosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroMicrofonosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1292,6 +1272,7 @@ paquetedias  momen ;
     public javax.swing.JTextField JTextFieldNombrePasante;
     public javax.swing.JTextField JTextFieldNumePupitres;
     public javax.swing.JTextField JTextFieldNumeroComputadoras;
+    public javax.swing.JTextField JTextFieldNumeroMicrofonos;
     public javax.swing.JTextField JTextFieldNumeroParlantes;
     public javax.swing.JTextField JTextFieldNumeroVentiladores;
     public javax.swing.JTextField JTextFieldRutaImagen;
@@ -1324,7 +1305,8 @@ paquetedias  momen ;
     public static javax.swing.JLabel jLabelNombreHorario;
     private javax.swing.JLabel jLabelNombrePasante;
     private javax.swing.JLabel jLabelNumeroComputadora;
-    private javax.swing.JLabel jLabelNumeroComputadora1;
+    private javax.swing.JLabel jLabelNumeroMicrofonos;
+    private javax.swing.JLabel jLabelNumeroParlantes;
     private javax.swing.JPanel jPanelAtributosExtras;
     private javax.swing.JPanel jPanelDias;
     // End of variables declaration//GEN-END:variables

@@ -10,7 +10,26 @@ package modelo.entidadesDTO;
  * @author Dexx
  */
 public class aulaGrande extends Aula{
+    private boolean tela_Proyector;
+    private boolean proyector;
 
+    public boolean isTela_Proyector() {
+        return tela_Proyector;
+    }
+
+    public void setTela_Proyector(boolean tela_Proyector) {
+        this.tela_Proyector = tela_Proyector;
+    }
+
+    public boolean isProyector() {
+        return proyector;
+    }
+
+    public void setProyector(boolean proyector) {
+        this.proyector = proyector;
+    }
+    
+    
     @Override
     public int getNumero_Computadoras() {
         return 0;

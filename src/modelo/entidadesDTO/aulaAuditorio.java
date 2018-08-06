@@ -53,4 +53,24 @@ public class aulaAuditorio  extends Aula{
     public int getNumero_Computadoras() {
        return 0;
     }
+
+    @Override
+    public boolean isTela_Proyector() {
+return false;
+    }
+
+    @Override
+    public void setTela_Proyector(boolean tela_Proyector) {
+        System.out.println("NO IMPLEMENTA");
+    }
+
+    @Override
+    public boolean isProyector() {
+return false;
+    }
+
+    @Override
+    public void setProyector(boolean proyector) {
+        System.out.println("NO IMPLEMENTA");
+    }
 }

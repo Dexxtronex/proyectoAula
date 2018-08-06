@@ -25,6 +25,25 @@ public class aulaLaboratorio extends Aula{
     
 
     @Override
+    public boolean isTela_Proyector() {
+return false;
+    }
+
+    @Override
+    public void setTela_Proyector(boolean tela_Proyector) {
+        System.out.println("NO IMPLEMENTA");
+    }
+
+    @Override
+    public boolean isProyector() {
+return false;
+    }
+
+    @Override
+    public void setProyector(boolean proyector) {
+        System.out.println("NO IMPLEMENTA");
+    }
+    @Override
     public int getNumero_Computadoras() {
         return numero_Computadoras;
     }

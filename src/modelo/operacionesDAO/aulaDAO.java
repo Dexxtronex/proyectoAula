@@ -155,6 +155,16 @@ public class aulaDAO {
 
             existenciaTipoAula=3;
         }
+        else if(au instanceof aulaAuditorio){
+            sql = "UPDATE aula  SET codigo = ?,"
+                    + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
+                    + "numeros_pupitres = ?, tipo_ventilacion = ?,"
+                    + "cantidad_ventilacion = ?, ruta_imagen = ?, "
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, cantidad_Parlantes=?,cantidad_Microfonos=?"+ "WHERE id = ?";
+                   System.out.println("Existencia Aula Pequeña");
+
+            existenciaTipoAula=4;
+        }
          
           
             sentenciaPreparada = con.prepareStatement(sql);
@@ -175,7 +185,16 @@ public class aulaDAO {
             sentenciaPreparada.setInt(14, au.getId());
 
             }
-            else{
+            else if(existenciaTipoAula==4){
+            sentenciaPreparada.setInt(12, au.getCantidad_Parlantes());
+            sentenciaPreparada.setInt(13, au.getCantidad_Microfonos());
+            sentenciaPreparada.setInt(14, au.getId());
+            }
+            else if(existenciaTipoAula==2){
+                System.out.println("Valor del id del aula "+au.getId());
+                sentenciaPreparada.setInt(12, au.getId());
+            }
+            else if(existenciaTipoAula==3){
                 System.out.println("Valor del id del aula "+au.getId());
                 sentenciaPreparada.setInt(12, au.getId());
             }

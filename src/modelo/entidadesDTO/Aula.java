@@ -55,7 +55,11 @@ public abstract class Aula   {
     }
   
    
+ public abstract boolean isTela_Proyector() ;
 
+    public abstract void setTela_Proyector(boolean tela_Proyector);
+    public  abstract boolean isProyector() ;
+    public abstract void setProyector(boolean proyector);
     public abstract int getNumero_Computadoras();
     public abstract String getNombrePasante();
  public abstract void setNumero_Computadoras(int a);
