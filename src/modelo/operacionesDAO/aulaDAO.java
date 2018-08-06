@@ -51,8 +51,8 @@ public class aulaDAO {
         else if(au instanceof aulaGrande){
             sql = "insert into aula "
                 + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
-                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula) "
-                + "values (?,?,?,?,?,?,?,?,?,?,?)";
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula,tela_Proyector,proyector) "
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=2;
         }
         else if(au instanceof aulaPequeña){
@@ -91,11 +91,16 @@ public class aulaDAO {
             sentenciaPreparada.setString(13, au.getNombrePasante());
 
             }
+            else if(existenciaTipoAula==2){
+            sentenciaPreparada.setBoolean(12, au.isTela_Proyector());
+            sentenciaPreparada.setBoolean(13, au.isProyector());
+            }
             else if(existenciaTipoAula==4){
             sentenciaPreparada.setInt(12, au.getCantidad_Parlantes());
             sentenciaPreparada.setInt(13, au.getCantidad_Microfonos());
 
             }
+            
             
             //ejecutar la sentencia
             res = sentenciaPreparada.executeUpdate();
@@ -140,7 +145,7 @@ public class aulaDAO {
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?"+ "WHERE id = ?";
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, tela_Proyector=?,proyector=?"+ "WHERE id = ?";
                            System.out.println("Existencia Aula Grande");
 
             existenciaTipoAula=2;
@@ -161,7 +166,7 @@ public class aulaDAO {
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
                     + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, cantidad_Parlantes=?,cantidad_Microfonos=?"+ "WHERE id = ?";
-                   System.out.println("Existencia Aula Pequeña");
+                   System.out.println("Existencia Aula AUDITORIO");
 
             existenciaTipoAula=4;
         }
@@ -192,7 +197,10 @@ public class aulaDAO {
             }
             else if(existenciaTipoAula==2){
                 System.out.println("Valor del id del aula "+au.getId());
-                sentenciaPreparada.setInt(12, au.getId());
+                sentenciaPreparada.setBoolean(12, au.isTela_Proyector());
+            sentenciaPreparada.setBoolean(13, au.isProyector());
+                sentenciaPreparada.setInt(14, au.getId());
+                
             }
             else if(existenciaTipoAula==3){
                 System.out.println("Valor del id del aula "+au.getId());
@@ -342,7 +350,12 @@ public class aulaDAO {
                       System.out.println("Escogió Aula Pequeña");
 
                 }
-                                  
+                else if (tipoAula.equals("Auditorio") == true) {
+                    p = new aulaAuditorio();
+                    existenciaTipoAula = 4;
+                      System.out.println("Escogió Aula Auditorio");
+
+                }                 
                  
                 operaciondias = new paquetediasDAO();
                 if(existenciaTipoAula == 1){
@@ -384,7 +397,8 @@ public class aulaDAO {
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
                     p.setIdReservacion(resultset.getInt("p.idReservacion"));
-       
+                    p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
+                    p.setProyector(resultset.getBoolean("p.proyector"));
 
                 }
                 else if(existenciaTipoAula == 3){
@@ -408,7 +422,27 @@ public class aulaDAO {
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
 
                 }
-                
+                else if(existenciaTipoAula == 4){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
+                    p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
+
+                }
                 
                 lista.add(p);
 
