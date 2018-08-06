@@ -22,7 +22,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
      */
     public JFramePrincipal() {
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
     }
 
     /**
@@ -60,7 +60,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         setTitle("SISTEMA DE VENTAS");
         getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
 
-        jPanel1.setBackground(new java.awt.Color(204, 51, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setText("ESTE");
 
@@ -83,7 +83,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
 
         jLabel2.setText("SISTEMA DE VENTA DE PRODUCTOS");
@@ -123,7 +123,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(jLabel4)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(462, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +135,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setBackground(new java.awt.Color(204, 51, 0));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setText("OESTE");
 
