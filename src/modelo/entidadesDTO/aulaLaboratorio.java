@@ -44,8 +44,24 @@ public class aulaLaboratorio extends Aula{
 
   
    
-    
-   
+    @Override
+    public int getCantidad_Parlantes() {
+return 0;    }
+
+    @Override
+    public void setCantidad_Parlantes(int cantidad_Parlantes) {
+        System.out.println("NO IMPLEMENTA");
+    }
+
+    @Override
+    public int getCantidad_Microfonos() {
+return 0;    
+    }
+
+    @Override
+    public void setCantidad_Microfonos(int cantidad_Microfonos) {
+        System.out.println("NO IMPLEMENTA");
+    }
   
     
     

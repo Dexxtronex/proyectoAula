@@ -61,8 +61,16 @@ public abstract class Aula   {
  public abstract void setNumero_Computadoras(int a);
  public abstract void setNombrePasante(String s);
 
-  
 
+ 
+ public abstract int getCantidad_Parlantes() ;
+
+    public abstract void setCantidad_Parlantes(int cantidad_Parlantes);
+
+    public abstract int getCantidad_Microfonos() ;
+
+    public abstract void setCantidad_Microfonos(int cantidad_Microfonos);
+    
 
     public paquetedias getDias() {
         return dias;

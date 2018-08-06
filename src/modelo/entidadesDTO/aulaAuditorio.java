@@ -11,7 +11,7 @@ package modelo.entidadesDTO;
  */
 public class aulaAuditorio  extends Aula{
     private int cantidad_Parlantes;
-    private int cantidad_Microofonos;
+    private int cantidad_Microfonos;
 
     public int getCantidad_Parlantes() {
         return cantidad_Parlantes;
@@ -21,12 +21,12 @@ public class aulaAuditorio  extends Aula{
         this.cantidad_Parlantes = cantidad_Parlantes;
     }
 
-    public int getCantidad_Microofonos() {
-        return cantidad_Microofonos;
+    public int getCantidad_Microfonos() {
+        return cantidad_Microfonos;
     }
 
-    public void setCantidad_Microofonos(int cantidad_Microofonos) {
-        this.cantidad_Microofonos = cantidad_Microofonos;
+    public void setCantidad_Microfonos(int cantidad_Microfonos) {
+        this.cantidad_Microfonos = cantidad_Microfonos;
     }
         
     @Override

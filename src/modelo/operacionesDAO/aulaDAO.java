@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.conexion.MiConexion;
 import modelo.entidadesDTO.Aula;
+import modelo.entidadesDTO.aulaAuditorio;
 import modelo.entidadesDTO.aulaGrande;
 import modelo.entidadesDTO.aulaLaboratorio;
 import modelo.entidadesDTO.aulaPequeña;
@@ -61,6 +62,13 @@ public class aulaDAO {
                 + "values (?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=3;
         }
+        else if(au instanceof aulaAuditorio){
+            sql = "insert into aula "
+                + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula,cantidad_Parlantes,cantidad_Microfonos) "
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            existenciaTipoAula=4;
+        }
          
         try {
             //crear una sentencia preparada
@@ -81,6 +89,11 @@ public class aulaDAO {
             if(existenciaTipoAula==1){
             sentenciaPreparada.setInt(12, au.getNumero_Computadoras());
             sentenciaPreparada.setString(13, au.getNombrePasante());
+
+            }
+            else if(existenciaTipoAula==4){
+            sentenciaPreparada.setInt(12, au.getCantidad_Parlantes());
+            sentenciaPreparada.setInt(13, au.getCantidad_Microfonos());
 
             }
             
