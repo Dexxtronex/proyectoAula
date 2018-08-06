@@ -164,6 +164,8 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jLabelNumeroComputadora = new javax.swing.JLabel();
         jLabelNombrePasante = new javax.swing.JLabel();
         JTextFieldNombrePasante = new javax.swing.JTextField();
+        JTextFieldNumeroParlantes = new javax.swing.JTextField();
+        jLabelNumeroComputadora1 = new javax.swing.JLabel();
         JTextFieldNombreHorario = new javax.swing.JTextField();
         jLabelNombreHorario = new javax.swing.JLabel();
 
@@ -563,15 +565,31 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
             }
         });
 
+        JTextFieldNumeroParlantes.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNumeroParlantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNumeroParlantesActionPerformed(evt);
+            }
+        });
+
+        jLabelNumeroComputadora1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroComputadora1.setText("Numero Parlantes:");
+
         javax.swing.GroupLayout jPanelAtributosExtrasLayout = new javax.swing.GroupLayout(jPanelAtributosExtras);
         jPanelAtributosExtras.setLayout(jPanelAtributosExtrasLayout);
         jPanelAtributosExtrasLayout.setHorizontalGroup(
             jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosExtrasLayout.createSequentialGroup()
+            .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelNumeroComputadora, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTextFieldNumeroComputadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosExtrasLayout.createSequentialGroup()
+                        .addComponent(jLabelNumeroComputadora, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTextFieldNumeroComputadoras, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAtributosExtrasLayout.createSequentialGroup()
+                        .addComponent(jLabelNumeroComputadora1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTextFieldNumeroParlantes, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
@@ -588,7 +606,11 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNumeroComputadora)
                     .addComponent(JTextFieldNumeroComputadoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNumeroComputadora1)
+                    .addComponent(JTextFieldNumeroParlantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(jPanelAtributosExtrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelAtributosExtrasLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1218,6 +1240,10 @@ paquetedias  momen ;
 
     }//GEN-LAST:event_JTextFieldCodigoActionPerformed
 
+    private void JTextFieldNumeroParlantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroParlantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroParlantesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1266,6 +1292,7 @@ paquetedias  momen ;
     public javax.swing.JTextField JTextFieldNombrePasante;
     public javax.swing.JTextField JTextFieldNumePupitres;
     public javax.swing.JTextField JTextFieldNumeroComputadoras;
+    public javax.swing.JTextField JTextFieldNumeroParlantes;
     public javax.swing.JTextField JTextFieldNumeroVentiladores;
     public javax.swing.JTextField JTextFieldRutaImagen;
     private javax.swing.JButton jButton1;
@@ -1297,6 +1324,7 @@ paquetedias  momen ;
     public static javax.swing.JLabel jLabelNombreHorario;
     private javax.swing.JLabel jLabelNombrePasante;
     private javax.swing.JLabel jLabelNumeroComputadora;
+    private javax.swing.JLabel jLabelNumeroComputadora1;
     private javax.swing.JPanel jPanelAtributosExtras;
     private javax.swing.JPanel jPanelDias;
     // End of variables declaration//GEN-END:variables
