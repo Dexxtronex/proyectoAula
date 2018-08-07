@@ -31,7 +31,7 @@ public class aulaAuditorio  extends Aula{
         
     @Override
     public String toString() {
-        return "Aula Auditorio";
+        return "Auditorio";
     }
 
     @Override

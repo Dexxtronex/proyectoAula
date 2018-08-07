@@ -139,7 +139,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, numero_Computadoras = ?, nombre_Pasante = ?"+ "WHERE id = ?";
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, numero_Computadoras = ?, nombre_Pasante = ?"+ " WHERE id = '"+ au.getId() +"'";
                 System.out.println("Existencia Aula Laboratorio");
             existenciaTipoAula=1;
         }
@@ -148,7 +148,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, tela_Proyector=?,proyector=?"+ "WHERE id = ?";
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, tela_Proyector = ?, proyector = ?"+ " WHERE id = '"+ au.getId() +"'";
                            System.out.println("Existencia Aula Grande");
 
             existenciaTipoAula=2;
@@ -158,17 +158,21 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?"+ "WHERE id = ?";
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?"+ " WHERE id = '"+ au.getId() +"'";
                    System.out.println("Existencia Aula Pequeña");
 
             existenciaTipoAula=3;
         }
         else if(au instanceof aulaAuditorio){
+           
+            
             sql = "UPDATE aula  SET codigo = ?,"
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, cantidad_Parlantes=?,cantidad_Microfonos=?"+ "WHERE id = ?";
+                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?,"
+                    + "cantidad_Parlantes = ?, cantidad_Microfonos = ?"+ " WHERE id = '"+ au.getId() +"'"; 
+        
                    System.out.println("Existencia Aula AUDITORIO");
 
             existenciaTipoAula=4;
@@ -190,24 +194,22 @@ public class aulaDAO implements Interfaz_OperacionesSala{
             if(existenciaTipoAula==1){
             sentenciaPreparada.setInt(12, au.getNumero_Computadoras());
             sentenciaPreparada.setString(13, au.getNombrePasante());
-            sentenciaPreparada.setInt(14, au.getId());
 
             }
             else if(existenciaTipoAula==4){
+
             sentenciaPreparada.setInt(12, au.getCantidad_Parlantes());
             sentenciaPreparada.setInt(13, au.getCantidad_Microfonos());
-            sentenciaPreparada.setInt(14, au.getId());
             }
             else if(existenciaTipoAula==2){
-                System.out.println("Valor del id del aula "+au.getId());
-                sentenciaPreparada.setBoolean(12, au.isTela_Proyector());
-            sentenciaPreparada.setBoolean(13, au.isProyector());
-                sentenciaPreparada.setInt(14, au.getId());
+                     System.out.println("Valor del id del aula GRANDE"+au.getId());
+                sentenciaPreparada.setBoolean(12,au.isTela_Proyector());
+            sentenciaPreparada.setBoolean(13,au.isProyector());
+             
                 
             }
             else if(existenciaTipoAula==3){
-                System.out.println("Valor del id del aula "+au.getId());
-                sentenciaPreparada.setInt(12, au.getId());
+                System.out.println("Valor del id del aula pequeña"+au.getId());
             }
 
             //ejecutar la sentencia
@@ -264,14 +266,10 @@ public class aulaDAO implements Interfaz_OperacionesSala{
             } else {
                 return 0;
             }
-            Aula p = null;
-            paquetedias dias = null;
-            paquetediasDAO operaciondias;
             //recorre resultset
             while (resultset.next()) {//mientras haya un siguiente registro por leer
 
-                p = new aulaLaboratorio();
-                operaciondias = new paquetediasDAO();
+              
                return   resultset.getInt("p.id");
                 
 
