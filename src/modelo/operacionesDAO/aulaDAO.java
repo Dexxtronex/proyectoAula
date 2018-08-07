@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.conexion.MiConexion;
 import modelo.entidadesDTO.Aula;
+import modelo.entidadesDTO.Interfaz_OperacionesSala;
 import modelo.entidadesDTO.aulaAuditorio;
 import modelo.entidadesDTO.aulaGrande;
 import modelo.entidadesDTO.aulaLaboratorio;
@@ -24,13 +25,14 @@ import modelo.entidadesDTO.paquetedias;
  *
  * @author Dexx
  */
-public class aulaDAO {
+public class aulaDAO implements Interfaz_OperacionesSala{
      private MiConexion micon;
     private Connection con;
     private PreparedStatement sentenciaPreparada;
     private Statement sentencia;
     private ResultSet resultset;
     
+     @Override
     public int guardarAula(Aula au) {
         int res = 0;
         micon = new MiConexion();
@@ -123,6 +125,7 @@ public class aulaDAO {
         return res;
     }
 
+     @Override
     public int editar(Aula au) {
         //obtener conexion
         micon = new MiConexion();
@@ -225,6 +228,7 @@ public class aulaDAO {
         }
         return r;
     }
+     @Override
     public int consultaId(String criterio) {
         ArrayList<Aula> lista = null;
         //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
@@ -289,6 +293,7 @@ public class aulaDAO {
     }
 
 
+     @Override
     public ArrayList<Aula> consultaAulas(String criterio) {
         ArrayList<Aula> lista = null;
         //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
@@ -462,6 +467,7 @@ public class aulaDAO {
 
         return lista;
     }
+     @Override
     public int eliminar(Aula au) {
         //obtener conexion
         micon = new MiConexion();

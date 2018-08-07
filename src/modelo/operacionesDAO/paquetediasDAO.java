@@ -12,19 +12,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.conexion.MiConexion;
+import modelo.entidadesDTO.Interfaz_OperacionesPaqueteDias;
 import modelo.entidadesDTO.paquetedias;
 
 /**
  *
  * @author Dexx
  */
-public class paquetediasDAO {
+public class paquetediasDAO implements Interfaz_OperacionesPaqueteDias{
      private MiConexion micon;
     private Connection con;
     private PreparedStatement sentenciaPreparada;
     private Statement sentencia;
     private ResultSet resultset;
     
+     @Override
     public int guardarAula(paquetedias paque) {
         int res = 0;
         micon = new MiConexion(); // inicializo
@@ -76,6 +78,7 @@ public class paquetediasDAO {
         return res;
     }
 
+     @Override
     public paquetedias consultaId(String criterio) {
         paquetedias lista = null;
         //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
@@ -146,7 +149,8 @@ sentenciaPreparada = con.prepareStatement(query2);
 
         return lista;
     }
-public paquetedias consultaCodigo(String criterio) {
+     @Override
+     public paquetedias consultaCodigo(String criterio) {
         paquetedias lista = null;
         //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
         //cuando p.estado sea igual a 1 y p.idecategoria sea igual a c.id
@@ -216,6 +220,7 @@ sentenciaPreparada = con.prepareStatement(query2);
 
         return lista;
     }
+     @Override
     public int editar(paquetedias paque) {
         //obtener conexion
         micon = new MiConexion();
@@ -260,6 +265,7 @@ sentenciaPreparada = con.prepareStatement(query2);
         return r;
     }
 
+     @Override
     public int eliminar(String criterio) {
         //obtener conexion
         micon = new MiConexion();
@@ -286,6 +292,7 @@ sentenciaPreparada = con.prepareStatement(query2);
         return r;
     }
 
+     @Override
     public ArrayList<paquetedias> Cargar()
     {
         micon = new MiConexion(); // inicializo
