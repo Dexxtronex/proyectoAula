@@ -995,10 +995,296 @@ public class JFrameEditarAula extends javax.swing.JFrame {
     }//GEN-LAST:event_JTextFieldNombreHorarioKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
+   if(validacion() ==0){
+            editar();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error, llene todos los campos por favor");
+        }
+        
+      
 
 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void JTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldCodigoActionPerformed
+         objAulaDao = new aulaDAO();
+         ArrayList<Aula> lista = null ;
+                        lista = objAulaDao.consultaAulas(JTextFieldCodigo.getText());
+          if(lista == null){
+              JOptionPane.showMessageDialog(null, "Error al cargar Datos, no Existe Codigo");
+          }    else{
+                      cargarComponentes(lista);
+
+          } 
+                 
+                        
+        
+         
+      
+        
+
+    }//GEN-LAST:event_JTextFieldCodigoActionPerformed
+
+    private void jCheckBoxProyector1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxProyector1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxProyector1ActionPerformed
+
+    private void JTextFieldNumeroParlantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroParlantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroParlantesActionPerformed
+
+    private void JTextFieldNumeroMicrofonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroMicrofonosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroMicrofonosActionPerformed
+
+    private void JTextFieldNumeroComputadorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroComputadorasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroComputadorasActionPerformed
+
+    private void JTextFieldNombrePasanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNombrePasanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNombrePasanteActionPerformed
+private void cargarEditado(String codigo){
+     objAulaDao = new aulaDAO();
+         ArrayList<Aula> lista = null ;
+                        lista = objAulaDao.consultaAulas(codigo);
+          if(lista == null){
+              JOptionPane.showMessageDialog(null, "Error al cargar Datos, no Existe Codigo");
+          }    else{
+                      cargarComponentes(lista);
+
+          } 
+                
+}
+    private void cargarComponentes(ArrayList<Aula> lista){
+            Image imagenPresentar=null;
+            jButton1.setEnabled(true);
+     for(int i = 0; i <lista.size(); i++){
+         if(lista.get(i).getDias() == null){
+             System.out.println("esta vacio");
+         }
+         System.out.println("tipo de aula"+lista.get(i).toString());
+         id = lista.get(i).getId();
+         this.JComboBoxTipoAula.setSelectedItem(lista.get(i).getTipoAula());
+         
+        this.JComboBoxTipoHorario.setSelectedItem(lista.get(i).getDias().getCodigo());
+        this.JComboBoxTipoVentilador.setSelectedItem(lista.get(i).getTipo_ventilacion());
+        this.JTextFieldCapa_Alumno.setText(Integer.toString(lista.get(i).getCapacidad_alumnos()));
+        this.JTextFieldCapa_Pizarra.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldCodigo.setText(lista.get(i).getCodigo());
+        this.JTextFieldHora_Fin.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldHora_Inicio.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldNombreHorario.setText((lista.get(i).getDias().getCodigo()));
+        this.JTextFieldNombrePasante.setText(lista.get(i).getNombrePasante());
+        this.JTextFieldNumePupitres.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldNumeroComputadoras.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldNumeroVentiladores.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldRutaImagen.setText(lista.get(i).getRuta_imagen());
+         this.jCheckBoxDomingo.setSelected((lista.get(i).getDias().isDomingo()));
+        this.jCheckBoxJueves.setSelected((lista.get(i).getDias().isJueves()));
+        this.jCheckBoxLunes.setSelected((lista.get(i).getDias().isLunes()));
+        this.jCheckBoxMartes.setSelected((lista.get(i).getDias().isMartes()));
+        this.jCheckBoxMiercoles.setSelected((lista.get(i).getDias().isMiercoles()));
+        this.jCheckBoxSabado.setSelected((lista.get(i).getDias().isSabado()));
+        this.jCheckBoxViernes.setSelected((lista.get(i).getDias().isViernes()));
+        
+        if(lista.get(i).getTipoAula().equals("Laboratorio")==true){
+        jPanelAtributosExtras2.setVisible(true);
+        jPanelAtributosAuditorio.setVisible(false);
+        jPanelAtributosAulaGrande.setVisible(false);
+        JTextFieldNombrePasante.setText((lista.get(i).getNombrePasante()));
+        JTextFieldNumeroComputadoras.setText((Integer.toString(lista.get(i).getNumero_Computadoras())));
+
+         }
+         else if(lista.get(i).getTipoAula().equals("Aula Grande")==true){
+             jPanelAtributosExtras2.setVisible(false);
+        jPanelAtributosAuditorio.setVisible(false);
+         jPanelAtributosAulaGrande.setVisible(true);
+         jCheckBoxProyector1.setSelected((lista.get(i).isProyector()));
+                  jCheckBoxTela_Proyector1.setSelected((lista.get(i).isTela_Proyector()));
+
+         }
+         else  if(lista.get(i).getTipoAula().equals("Auditorio")==true){
+             jPanelAtributosExtras2.setVisible(false);
+        jPanelAtributosAuditorio.setVisible(true);
+         jPanelAtributosAulaGrande.setVisible(false);
+                 JTextFieldNumeroParlantes.setText(Integer.toString(lista.get(i).getCantidad_Parlantes()));
+        JTextFieldNumeroMicrofonos.setText(Integer.toString(lista.get(i).getCantidad_Microfonos()));
+
+         }
+         else{
+             jPanelAtributosExtras2.setVisible(false);
+        jPanelAtributosAuditorio.setVisible(false);
+         jPanelAtributosAulaGrande.setVisible(false);
+         }
+        
+        
+        try{
+                    imagenPresentar =javax.imageio.ImageIO.read((lista.get(i).getFoto().getBinaryStream()));
+                    image=new ImageIcon(imagenPresentar);
+                     this.jLabel14.setIcon(image);
+        }
+        catch(IOException ex){
+            System.out.println("Error al encontrar foto"+ex);
+        }
+        catch(SQLException ex){
+            System.out.println("Error al generar base de datos de imagen"+ex);
+        }          
+                      
+       
+        }
+       
+   }
+
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrameEditarAula().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox JComboBoxTipoAula;
+    public javax.swing.JComboBox JComboBoxTipoHorario;
+    public javax.swing.JComboBox JComboBoxTipoVentilador;
+    public javax.swing.JTextField JTextFieldCapa_Alumno;
+    public javax.swing.JTextField JTextFieldCapa_Pizarra;
+    public javax.swing.JTextField JTextFieldCodigo;
+    public javax.swing.JTextField JTextFieldHora_Fin;
+    public javax.swing.JTextField JTextFieldHora_Inicio;
+    public javax.swing.JTextField JTextFieldNombreHorario;
+    public javax.swing.JTextField JTextFieldNombrePasante;
+    public javax.swing.JTextField JTextFieldNumePupitres;
+    public javax.swing.JTextField JTextFieldNumeroComputadoras;
+    public javax.swing.JTextField JTextFieldNumeroMicrofonos;
+    public javax.swing.JTextField JTextFieldNumeroParlantes;
+    public javax.swing.JTextField JTextFieldNumeroVentiladores;
+    public javax.swing.JTextField JTextFieldRutaImagen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBoxCrearHorario;
+    private javax.swing.JCheckBox jCheckBoxDomingo;
+    private javax.swing.JCheckBox jCheckBoxJueves;
+    private javax.swing.JCheckBox jCheckBoxLunes;
+    private javax.swing.JCheckBox jCheckBoxMartes;
+    private javax.swing.JCheckBox jCheckBoxMiercoles;
+    private javax.swing.JCheckBox jCheckBoxProyector1;
+    private javax.swing.JCheckBox jCheckBoxSabado;
+    private javax.swing.JCheckBox jCheckBoxTela_Proyector1;
+    private javax.swing.JCheckBox jCheckBoxViernes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    public javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel25;
+    public static javax.swing.JLabel jLabel27;
+    public static javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    public static javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel jLabelNombreHorario;
+    private javax.swing.JLabel jLabelNombrePasante;
+    private javax.swing.JLabel jLabelNumeroComputadora;
+    private javax.swing.JLabel jLabelNumeroMicrofonos;
+    private javax.swing.JLabel jLabelNumeroParlantes;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelAtributosAuditorio;
+    private javax.swing.JPanel jPanelAtributosAulaGrande;
+    private javax.swing.JPanel jPanelAtributosExtras2;
+    private javax.swing.JPanel jPanelDias;
+    // End of variables declaration//GEN-END:variables
+
+    private void deshabilitarJCheckBoxTipoHorario() {
+        jCheckBoxLunes.setSelected(false);
+        jCheckBoxMartes.setSelected(false);
+        jCheckBoxMiercoles.setSelected(false);
+        jCheckBoxJueves.setSelected(false);
+        jCheckBoxViernes.setSelected(false);
+        jCheckBoxSabado.setSelected(false);
+        jCheckBoxDomingo.setSelected(false);
+        jCheckBoxLunes.setEnabled(false);
+        jCheckBoxMartes.setEnabled(false);
+        jCheckBoxMiercoles.setEnabled(false);
+        jCheckBoxJueves.setEnabled(false);
+        jCheckBoxViernes.setEnabled(false);
+        jCheckBoxSabado.setEnabled(false);
+        jCheckBoxDomingo.setEnabled(false);
+         JTextFieldHora_Inicio.setText("");
+       JTextFieldHora_Fin.setText("");
+        JTextFieldHora_Inicio.setEnabled(false);
+       JTextFieldHora_Fin.setEnabled(false);
+    }
+ private void habilitarJCheckBoxTipoHorario() {
+        jCheckBoxLunes.setSelected(false);
+        jCheckBoxMartes.setSelected(false);
+
+        jCheckBoxMiercoles.setSelected(false);
+
+        jCheckBoxJueves.setSelected(false);
+
+        jCheckBoxViernes.setSelected(false);
+
+        jCheckBoxSabado.setSelected(false);
+
+        jCheckBoxDomingo.setSelected(false);
+
+                                    
+        
+        
+        jCheckBoxLunes.setEnabled(true);
+        jCheckBoxMartes.setEnabled(true);
+
+        jCheckBoxMiercoles.setEnabled(true);
+
+        jCheckBoxJueves.setEnabled(true);
+
+        jCheckBoxViernes.setEnabled(true);
+
+        jCheckBoxSabado.setEnabled(true);
+
+        jCheckBoxDomingo.setEnabled(true);
+        JTextFieldHora_Inicio.setEnabled(true);
+       JTextFieldHora_Fin.setEnabled(true);
+    }
+private void editar(){
+    
 if((JComboBoxTipoAula.getSelectedItem().toString().equals("Laboratorio"))== true){
     try {
         objAula = new aulaLaboratorio();
@@ -1313,283 +1599,30 @@ paquetedias  momen ;
 
   }
   
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void JTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldCodigoActionPerformed
-         objAulaDao = new aulaDAO();
-         ArrayList<Aula> lista = null ;
-                        lista = objAulaDao.consultaAulas(JTextFieldCodigo.getText());
-          if(lista == null){
-              JOptionPane.showMessageDialog(null, "Error al cargar Datos, no Existe Codigo");
-          }    else{
-                      cargarComponentes(lista);
-
-          } 
-                 
-                        
-        
-         
-      
-        
-
-    }//GEN-LAST:event_JTextFieldCodigoActionPerformed
-
-    private void jCheckBoxProyector1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxProyector1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxProyector1ActionPerformed
-
-    private void JTextFieldNumeroParlantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroParlantesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldNumeroParlantesActionPerformed
-
-    private void JTextFieldNumeroMicrofonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroMicrofonosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldNumeroMicrofonosActionPerformed
-
-    private void JTextFieldNumeroComputadorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNumeroComputadorasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldNumeroComputadorasActionPerformed
-
-    private void JTextFieldNombrePasanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNombrePasanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldNombrePasanteActionPerformed
-private void cargarEditado(String codigo){
-     objAulaDao = new aulaDAO();
-         ArrayList<Aula> lista = null ;
-                        lista = objAulaDao.consultaAulas(codigo);
-          if(lista == null){
-              JOptionPane.showMessageDialog(null, "Error al cargar Datos, no Existe Codigo");
-          }    else{
-                      cargarComponentes(lista);
-
-          } 
-                
 }
-    private void cargarComponentes(ArrayList<Aula> lista){
-            Image imagenPresentar=null;
-            jButton1.setEnabled(true);
-     for(int i = 0; i <lista.size(); i++){
-         if(lista.get(i).getDias() == null){
-             System.out.println("esta vacio");
-         }
-         System.out.println("tipo de aula"+lista.get(i).toString());
-         id = lista.get(i).getId();
-         this.JComboBoxTipoAula.setSelectedItem(lista.get(i).getTipoAula());
-         
-        this.JComboBoxTipoHorario.setSelectedItem(lista.get(i).getDias().getCodigo());
-        this.JComboBoxTipoVentilador.setSelectedItem(lista.get(i).getTipo_ventilacion());
-        this.JTextFieldCapa_Alumno.setText(Integer.toString(lista.get(i).getCapacidad_alumnos()));
-        this.JTextFieldCapa_Pizarra.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldCodigo.setText(lista.get(i).getCodigo());
-        this.JTextFieldHora_Fin.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldHora_Inicio.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldNombreHorario.setText((lista.get(i).getDias().getCodigo()));
-        this.JTextFieldNombrePasante.setText(lista.get(i).getNombrePasante());
-        this.JTextFieldNumePupitres.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldNumeroComputadoras.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldNumeroVentiladores.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldRutaImagen.setText(lista.get(i).getRuta_imagen());
-         this.jCheckBoxDomingo.setSelected((lista.get(i).getDias().isDomingo()));
-        this.jCheckBoxJueves.setSelected((lista.get(i).getDias().isJueves()));
-        this.jCheckBoxLunes.setSelected((lista.get(i).getDias().isLunes()));
-        this.jCheckBoxMartes.setSelected((lista.get(i).getDias().isMartes()));
-        this.jCheckBoxMiercoles.setSelected((lista.get(i).getDias().isMiercoles()));
-        this.jCheckBoxSabado.setSelected((lista.get(i).getDias().isSabado()));
-        this.jCheckBoxViernes.setSelected((lista.get(i).getDias().isViernes()));
-        
-        if(lista.get(i).getTipoAula().equals("Laboratorio")==true){
-        jPanelAtributosExtras2.setVisible(true);
-        jPanelAtributosAuditorio.setVisible(false);
-        jPanelAtributosAulaGrande.setVisible(false);
-        JTextFieldNombrePasante.setText((lista.get(i).getNombrePasante()));
-        JTextFieldNumeroComputadoras.setText((Integer.toString(lista.get(i).getNumero_Computadoras())));
-
-         }
-         else if(lista.get(i).getTipoAula().equals("Aula Grande")==true){
-             jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(false);
-         jPanelAtributosAulaGrande.setVisible(true);
-         jCheckBoxProyector1.setSelected((lista.get(i).isProyector()));
-                  jCheckBoxTela_Proyector1.setSelected((lista.get(i).isTela_Proyector()));
-
-         }
-         else  if(lista.get(i).getTipoAula().equals("Auditorio")==true){
-             jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(true);
-         jPanelAtributosAulaGrande.setVisible(false);
-                 JTextFieldNumeroParlantes.setText(Integer.toString(lista.get(i).getCantidad_Parlantes()));
-        JTextFieldNumeroMicrofonos.setText(Integer.toString(lista.get(i).getCantidad_Microfonos()));
-
-         }
-         else{
-             jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(false);
-         jPanelAtributosAulaGrande.setVisible(false);
-         }
-        
-        
-        try{
-                    imagenPresentar =javax.imageio.ImageIO.read((lista.get(i).getFoto().getBinaryStream()));
-                    image=new ImageIcon(imagenPresentar);
-                     this.jLabel14.setIcon(image);
+private int validacion(){
+     int error = 0;
+        if(JTextFieldRutaImagen.getText().length()==0){
+           return error = 1; // error, campo invalido 
         }
-        catch(IOException ex){
-            System.out.println("Error al encontrar foto"+ex);
+        else if(JTextFieldCodigo.getText().length()==0){
+           return error = 1; // error, campo invalido 
         }
-        catch(SQLException ex){
-            System.out.println("Error al generar base de datos de imagen"+ex);
-        }          
-                      
-       
+        else if(JTextFieldHora_Inicio.getText().length()==0){
+           return error = 1; // error, campo invalido 
+        }else if(JTextFieldHora_Fin.getText().length()==0){
+           return error = 1; // error, campo invalido 
         }
-       
-   }
-
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        else if((jCheckBoxLunes.isSelected()==false )&&(jCheckBoxMartes.isSelected()==false)
+                &&(jCheckBoxMiercoles.isSelected()==false) &&(jCheckBoxJueves.isSelected()==false) &&
+                (jCheckBoxViernes.isSelected()==false)&&(jCheckBoxSabado.isSelected()==false)&&(jCheckBoxDomingo.isSelected()==false)){
+           return error = 1; // error, campo invalido 
+           
+                    
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameEditarAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        else if(JComboBoxTipoAula.getSelectedItem().equals("....")){
+           return error = 1; // error, campo invalido 
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrameEditarAula().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox JComboBoxTipoAula;
-    public javax.swing.JComboBox JComboBoxTipoHorario;
-    public javax.swing.JComboBox JComboBoxTipoVentilador;
-    public javax.swing.JTextField JTextFieldCapa_Alumno;
-    public javax.swing.JTextField JTextFieldCapa_Pizarra;
-    public javax.swing.JTextField JTextFieldCodigo;
-    public javax.swing.JTextField JTextFieldHora_Fin;
-    public javax.swing.JTextField JTextFieldHora_Inicio;
-    public javax.swing.JTextField JTextFieldNombreHorario;
-    public javax.swing.JTextField JTextFieldNombrePasante;
-    public javax.swing.JTextField JTextFieldNumePupitres;
-    public javax.swing.JTextField JTextFieldNumeroComputadoras;
-    public javax.swing.JTextField JTextFieldNumeroMicrofonos;
-    public javax.swing.JTextField JTextFieldNumeroParlantes;
-    public javax.swing.JTextField JTextFieldNumeroVentiladores;
-    public javax.swing.JTextField JTextFieldRutaImagen;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBoxCrearHorario;
-    private javax.swing.JCheckBox jCheckBoxDomingo;
-    private javax.swing.JCheckBox jCheckBoxJueves;
-    private javax.swing.JCheckBox jCheckBoxLunes;
-    private javax.swing.JCheckBox jCheckBoxMartes;
-    private javax.swing.JCheckBox jCheckBoxMiercoles;
-    private javax.swing.JCheckBox jCheckBoxProyector1;
-    private javax.swing.JCheckBox jCheckBoxSabado;
-    private javax.swing.JCheckBox jCheckBoxTela_Proyector1;
-    private javax.swing.JCheckBox jCheckBoxViernes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    public javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
-    public static javax.swing.JLabel jLabel27;
-    public static javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    public static javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel4;
-    public static javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    public static javax.swing.JLabel jLabelNombreHorario;
-    private javax.swing.JLabel jLabelNombrePasante;
-    private javax.swing.JLabel jLabelNumeroComputadora;
-    private javax.swing.JLabel jLabelNumeroMicrofonos;
-    private javax.swing.JLabel jLabelNumeroParlantes;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelAtributosAuditorio;
-    private javax.swing.JPanel jPanelAtributosAulaGrande;
-    private javax.swing.JPanel jPanelAtributosExtras2;
-    private javax.swing.JPanel jPanelDias;
-    // End of variables declaration//GEN-END:variables
-
-    private void deshabilitarJCheckBoxTipoHorario() {
-        jCheckBoxLunes.setSelected(false);
-        jCheckBoxMartes.setSelected(false);
-        jCheckBoxMiercoles.setSelected(false);
-        jCheckBoxJueves.setSelected(false);
-        jCheckBoxViernes.setSelected(false);
-        jCheckBoxSabado.setSelected(false);
-        jCheckBoxDomingo.setSelected(false);
-        jCheckBoxLunes.setEnabled(false);
-        jCheckBoxMartes.setEnabled(false);
-        jCheckBoxMiercoles.setEnabled(false);
-        jCheckBoxJueves.setEnabled(false);
-        jCheckBoxViernes.setEnabled(false);
-        jCheckBoxSabado.setEnabled(false);
-        jCheckBoxDomingo.setEnabled(false);
-         JTextFieldHora_Inicio.setText("");
-       JTextFieldHora_Fin.setText("");
-        JTextFieldHora_Inicio.setEnabled(false);
-       JTextFieldHora_Fin.setEnabled(false);
-    }
- private void habilitarJCheckBoxTipoHorario() {
-        jCheckBoxLunes.setSelected(false);
-        jCheckBoxMartes.setSelected(false);
-
-        jCheckBoxMiercoles.setSelected(false);
-
-        jCheckBoxJueves.setSelected(false);
-
-        jCheckBoxViernes.setSelected(false);
-
-        jCheckBoxSabado.setSelected(false);
-
-        jCheckBoxDomingo.setSelected(false);
-
-                                    
-        
-        
-        jCheckBoxLunes.setEnabled(true);
-        jCheckBoxMartes.setEnabled(true);
-
-        jCheckBoxMiercoles.setEnabled(true);
-
-        jCheckBoxJueves.setEnabled(true);
-
-        jCheckBoxViernes.setEnabled(true);
-
-        jCheckBoxSabado.setEnabled(true);
-
-        jCheckBoxDomingo.setEnabled(true);
-        JTextFieldHora_Inicio.setEnabled(true);
-       JTextFieldHora_Fin.setEnabled(true);
-    }
-
+        return 0;
+}
 }
