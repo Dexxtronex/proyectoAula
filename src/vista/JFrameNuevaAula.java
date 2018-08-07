@@ -602,6 +602,11 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 JTextFieldNumeroParlantesActionPerformed(evt);
             }
         });
+        JTextFieldNumeroParlantes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroParlantesKeyTyped(evt);
+            }
+        });
         jPanelAtributosAuditorio.add(JTextFieldNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
 
         jLabelNumeroParlantes.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -612,6 +617,11 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         JTextFieldNumeroMicrofonos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextFieldNumeroMicrofonosActionPerformed(evt);
+            }
+        });
+        JTextFieldNumeroMicrofonos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroMicrofonosKeyTyped(evt);
             }
         });
         jPanelAtributosAuditorio.add(JTextFieldNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
@@ -629,6 +639,11 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         JTextFieldNumeroComputadoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextFieldNumeroComputadorasActionPerformed(evt);
+            }
+        });
+        JTextFieldNumeroComputadoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroComputadorasKeyTyped(evt);
             }
         });
         jPanelAtributosExtras2.add(JTextFieldNumeroComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
@@ -1059,6 +1074,48 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
     private void JTextFieldNombrePasanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldNombrePasanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldNombrePasanteActionPerformed
+
+    private void JTextFieldNumeroParlantesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldNumeroParlantesKeyTyped
+      char c = evt.getKeyChar();
+ int numerocaracteres = 2;
+ if((c<'0'||c>'9'))
+        {          
+
+            evt.consume();
+
+        } 
+ if(JTextFieldNumeroParlantes.getText().length()>= numerocaracteres){
+    evt.consume(); 
+ }        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroParlantesKeyTyped
+
+    private void JTextFieldNumeroMicrofonosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldNumeroMicrofonosKeyTyped
+      char c = evt.getKeyChar();
+ int numerocaracteres = 2;
+ if((c<'0'||c>'9'))
+        {          
+
+            evt.consume();
+
+        } 
+ if(JTextFieldNumeroMicrofonos.getText().length()>= numerocaracteres){
+    evt.consume(); 
+ }        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroMicrofonosKeyTyped
+
+    private void JTextFieldNumeroComputadorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldNumeroComputadorasKeyTyped
+      char c = evt.getKeyChar();
+ int numerocaracteres = 2;
+ if((c<'0'||c>'9'))
+        {          
+
+            evt.consume();
+
+        } 
+ if(JTextFieldNumeroComputadoras.getText().length()>= numerocaracteres){
+    evt.consume(); 
+ }        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNumeroComputadorasKeyTyped
 
     /**
      * @param args the command line arguments
