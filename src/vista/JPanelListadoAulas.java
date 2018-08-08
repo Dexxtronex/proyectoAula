@@ -35,7 +35,30 @@ public void cargarTabla(String criterio){
 
         //mostrar lista de productos en la tabla 
         DefaultTableModel modelo = new DefaultTableModel();
-        String[] columnas = {"ID","Codigo","idPaqueteDias","idReservacion","tipoAula"};
+        String[] columnas = {"ID","Codigo","idPaqueteDias","Existe Reservacion","tipoAula"};
+        modelo.setColumnIdentifiers(columnas);
+        Object [] producto = new Object[5];
+        for(int i = 0; i <lista.size(); i++){
+            producto[0] = lista.get(i).getId();
+            producto[1] = lista.get(i).getCodigo();
+            producto[2] = lista.get(i).getIdDias();
+            producto[3] = lista.get(i).getIdReservacion();
+            producto[4] = lista.get(i).toString();
+            System.out.println("tamaño de lista"+lista.size()+" tostring "+lista.get(i).toString());
+            modelo.addRow(producto);
+
+        }
+        //establecer el modelo de al JTABLE
+        jTableAula.setModel(modelo);
+    }
+public void cargarTablaTipo(String criterio,String tipo){
+        aulaDAO auladao = new aulaDAO();
+        lista = auladao.consultaAulasPorTipo(criterio,tipo);
+ 
+
+        //mostrar lista de productos en la tabla 
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] columnas = {"ID","Codigo","idPaqueteDias","Existe Reservacion","tipoAula"};
         modelo.setColumnIdentifiers(columnas);
         Object [] producto = new Object[5];
         for(int i = 0; i <lista.size(); i++){
@@ -63,6 +86,7 @@ public void cargarTabla(String criterio){
         jPanel1 = new javax.swing.JPanel();
         jLabelBuscar = new javax.swing.JLabel();
         jTextFieldbuscar = new javax.swing.JTextField();
+        jComboBoxBuscar = new javax.swing.JComboBox<>();
         jButtonBuscarAula = new javax.swing.JButton();
         jButtonNuevo = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
@@ -76,17 +100,31 @@ public void cargarTabla(String criterio){
 
         jLabelBuscar.setText("Buscar:");
         jPanel1.add(jLabelBuscar);
+
+        jTextFieldbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldbuscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldbuscar);
 
-        jButtonBuscarAula.setText("Buscar");
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "CODIGO", "TIPO" }));
+        jPanel1.add(jComboBoxBuscar);
+
+        jButtonBuscarAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/search_book_open_search_locate_6178 (1).png"))); // NOI18N
         jButtonBuscarAula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonBuscarAulaMouseClicked(evt);
             }
         });
+        jButtonBuscarAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarAulaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonBuscarAula);
 
-        jButtonNuevo.setText("Nuevo");
+        jButtonNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/new_page_document_16676.png"))); // NOI18N
         jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNuevoActionPerformed(evt);
@@ -94,7 +132,7 @@ public void cargarTabla(String criterio){
         });
         jPanel1.add(jButtonNuevo);
 
-        jButtonEditar.setText("Editar");
+        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/documentediting_editdocuments_text_documentedi_2820.png"))); // NOI18N
         jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditarActionPerformed(evt);
@@ -102,7 +140,7 @@ public void cargarTabla(String criterio){
         });
         jPanel1.add(jButtonEditar);
 
-        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/document_delete_256_icon-icons.com_75995.png"))); // NOI18N
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
@@ -131,7 +169,9 @@ public void cargarTabla(String criterio){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarAulaMouseClicked
-        cargarTabla(jTextFieldbuscar.getText());
+        
+        
+        cargarTablaTipo(jTextFieldbuscar.getText(),jComboBoxBuscar.getSelectedItem().toString());
     }//GEN-LAST:event_jButtonBuscarAulaMouseClicked
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -155,15 +195,30 @@ EliminarProducto();
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
                int fila = jTableAula.getSelectedRow();
-                 String codigo  = jTableAula.getValueAt(fila,1).toString();
+                 
 
-        
-        JFrameEditarAula obj = new JFrameEditarAula(codigo);
+        if(fila >=0 ){
+            String codigo  = jTableAula.getValueAt(fila,1).toString();
+            JFrameEditarAula obj = new JFrameEditarAula(codigo);
         obj.setJFrameListar(this);
         obj.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Error, seleccione una aula para editar");
+        }
+        
                 
 
     }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonBuscarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarAulaActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscarAulaActionPerformed
+
+    private void jTextFieldbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldbuscarActionPerformed
+ cargarTablaTipo(jTextFieldbuscar.getText(),jComboBoxBuscar.getSelectedItem().toString());
+ // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldbuscarActionPerformed
 private void EliminarProducto(){
     objAulaDao = new aulaDAO();
     int fila = jTableAula.getSelectedRow();
@@ -181,6 +236,7 @@ private void EliminarProducto(){
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonNuevo;
+    private javax.swing.JComboBox<String> jComboBoxBuscar;
     private javax.swing.JLabel jLabelBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

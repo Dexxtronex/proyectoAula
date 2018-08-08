@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.entidadesDTO.Aula;
 import modelo.entidadesDTO.aulaAuditorio;
 import modelo.entidadesDTO.aulaGrande;
@@ -55,6 +56,8 @@ public class JFrameEditarAula extends javax.swing.JFrame {
         jPanelAtributosAuditorio.setVisible(false);
          jPanelAtributosAulaGrande.setVisible(false);
         
+        setTitle("Editar Aula");
+        setLocationRelativeTo(null);
     }
     public JFrameEditarAula(String codigo) {
         initComponents();
@@ -67,8 +70,9 @@ public class JFrameEditarAula extends javax.swing.JFrame {
         jButton1.setEnabled(false);
         JComboBoxTipoAula.setEnabled(false);
         cargarEditado(codigo);
-        
-        
+        JTextFieldCodigo.setEnabled(false);
+        setTitle("Editar Aula");
+        setLocationRelativeTo(null);
     }
    private void bloqueoCamposTexto(){
        this.JComboBoxTipoAula.setEnabled(false); 
@@ -193,6 +197,7 @@ public class JFrameEditarAula extends javax.swing.JFrame {
         jLabelNumeroComputadora = new javax.swing.JLabel();
         jLabelNombrePasante = new javax.swing.JLabel();
         JTextFieldNombrePasante = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -346,6 +351,7 @@ public class JFrameEditarAula extends javax.swing.JFrame {
         });
         getContentPane().add(JTextFieldNumeroVentiladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 250, -1));
 
+        jPanelDias.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         jCheckBoxLunes.setText("Lunes");
@@ -406,11 +412,10 @@ public class JFrameEditarAula extends javax.swing.JFrame {
             .addGroup(jPanelDiasLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(jPanelDiasLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxSabado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(21, 21, 21)
                         .addComponent(jCheckBoxDomingo))
+                    .addComponent(jLabel6)
                     .addGroup(jPanelDiasLayout.createSequentialGroup()
                         .addComponent(jCheckBoxLunes)
                         .addGap(11, 11, 11)
@@ -420,8 +425,10 @@ public class JFrameEditarAula extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBoxJueves)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBoxViernes)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(jCheckBoxViernes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxSabado)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanelDiasLayout.setVerticalGroup(
             jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,11 +441,10 @@ public class JFrameEditarAula extends javax.swing.JFrame {
                     .addComponent(jCheckBoxMartes)
                     .addComponent(jCheckBoxMiercoles)
                     .addComponent(jCheckBoxJueves)
-                    .addComponent(jCheckBoxViernes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxDomingo)
+                    .addComponent(jCheckBoxViernes)
                     .addComponent(jCheckBoxSabado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxDomingo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -679,6 +685,21 @@ public class JFrameEditarAula extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 500, 90));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 660));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -704,7 +725,9 @@ public class JFrameEditarAula extends javax.swing.JFrame {
     }//GEN-LAST:event_JTextFieldCapa_AlumnoKeyTyped
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-       JFileChooser archivo= new JFileChooser();
+       FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
+        JFileChooser archivo = new JFileChooser();
+        archivo.setFileFilter(filter);
         int ventana=archivo.showOpenDialog(null);
         if(ventana==JFileChooser.APPROVE_OPTION){
             File file=archivo.getSelectedFile();
@@ -1281,6 +1304,7 @@ private void cargarEditado(String codigo){
     private javax.swing.JLabel jLabelNumeroMicrofonos;
     private javax.swing.JLabel jLabelNumeroParlantes;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAtributosAuditorio;
     private javax.swing.JPanel jPanelAtributosAulaGrande;
     private javax.swing.JPanel jPanelAtributosExtras2;

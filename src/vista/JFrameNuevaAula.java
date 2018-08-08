@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.entidadesDTO.Aula;
 import modelo.entidadesDTO.aulaAuditorio;
 import modelo.entidadesDTO.aulaGrande;
@@ -55,7 +56,9 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jPanelAtributosExtras2.setVisible(false);
         jPanelAtributosAuditorio.setVisible(false);
          jPanelAtributosAulaGrande.setVisible(false);
-
+        setTitle("Nueva Aula");
+        setLocationRelativeTo(null);
+        
         
     }
    private void bloqueoCamposTexto(){
@@ -182,6 +185,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jLabelNumeroComputadora = new javax.swing.JLabel();
         jLabelNombrePasante = new javax.swing.JLabel();
         JTextFieldNombrePasante = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,7 +222,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         getContentPane().add(JTextFieldCapa_Alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 250, -1));
 
         jLabel14.setBackground(new java.awt.Color(148, 148, 148));
-        jLabel14.setForeground(new java.awt.Color(140, 135, 135));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setFocusCycleRoot(true);
         jLabel14.setFocusTraversalPolicyProvider(true);
         jLabel14.setOpaque(true);
@@ -335,6 +339,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         });
         getContentPane().add(JTextFieldNumeroVentiladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 250, -1));
 
+        jPanelDias.setBackground(new java.awt.Color(255, 255, 255));
         jPanelDias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         jCheckBoxLunes.setText("Lunes");
@@ -393,45 +398,46 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         jPanelDiasLayout.setHorizontalGroup(
             jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDiasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(jPanelDiasLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxSabado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBoxDomingo))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel6))
                     .addGroup(jPanelDiasLayout.createSequentialGroup()
                         .addComponent(jCheckBoxLunes)
-                        .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBoxMartes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBoxMiercoles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBoxJueves)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBoxViernes)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxDomingo)
+                            .addGroup(jPanelDiasLayout.createSequentialGroup()
+                                .addComponent(jCheckBoxMiercoles)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBoxJueves)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBoxViernes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBoxSabado)))))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanelDiasLayout.setVerticalGroup(
             jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDiasLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxLunes)
                     .addComponent(jCheckBoxMartes)
                     .addComponent(jCheckBoxMiercoles)
                     .addComponent(jCheckBoxJueves)
-                    .addComponent(jCheckBoxViernes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxDomingo)
+                    .addComponent(jCheckBoxViernes)
                     .addComponent(jCheckBoxSabado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxDomingo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 430, 80));
+        getContentPane().add(jPanelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 440, 80));
 
         JTextFieldHora_Inicio.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldHora_Inicio.addActionListener(new java.awt.event.ActionListener() {
@@ -471,7 +477,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
         });
         getContentPane().add(JTextFieldRutaImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 250, -1));
 
-        jButton1.setText("Guardar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/save_icon-icons.com_53618.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -668,6 +674,21 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 500, 90));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 660));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -693,9 +714,12 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
     }//GEN-LAST:event_JTextFieldCapa_AlumnoKeyTyped
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-       JFileChooser archivo= new JFileChooser();
-        int ventana=archivo.showOpenDialog(null);
-        if(ventana==JFileChooser.APPROVE_OPTION){
+       
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
+        JFileChooser archivo = new JFileChooser();
+        archivo.setFileFilter(filter);
+        int ventana = archivo.showOpenDialog(null);
+        if (ventana == JFileChooser.APPROVE_OPTION) {
             File file=archivo.getSelectedFile();
             JTextFieldRutaImagen.setText(String.valueOf(file));
             Image foto=getToolkit().getImage(JTextFieldRutaImagen.getText());
@@ -1203,6 +1227,7 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNumeroMicrofonos;
     private javax.swing.JLabel jLabelNumeroParlantes;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAtributosAuditorio;
     private javax.swing.JPanel jPanelAtributosAulaGrande;
     private javax.swing.JPanel jPanelAtributosExtras2;

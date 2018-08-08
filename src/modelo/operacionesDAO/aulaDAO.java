@@ -290,7 +290,189 @@ public class aulaDAO implements Interfaz_OperacionesSala{
         return 0;
     }
 
+public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
+        ArrayList<Aula> lista = null;
+        //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
+        //cuando p.estado sea igual a 1 y p.idecategoria sea igual a c.id
+// consultar
+        micon = new MiConexion();
+        con = micon.getConection(); // mi clase de obtencion
+        int existenciaTipoAula = 0;
+        //String query2 = "select * from producto where estado=1 and talla='s'";
+        String query =null;
 
+        // preparar la sentencia
+        try {
+
+            if (criterio.equals("")) {
+                query = "select * from aula as p";
+
+                sentenciaPreparada = con.prepareStatement(query);
+            } else { // si hay criterio de busqueda
+                query = "select * from aula as p, paquetedias as c where"
+                + "  p.idDias=c.id ";
+
+                 //query = query + " and p.codigo=?"; // debe escribir igualito
+//          
+                   if(tipo.equals("ID")){
+                      query = query + " and p.id like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }else  if(tipo.equals("TIPO")){
+                      query = query + " and p.tipo_Aula like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }else  if(tipo.equals("CODIGO")){
+                      query = query + " and p.codigo like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }
+                
+                sentenciaPreparada = con.prepareStatement(query);
+           sentenciaPreparada.setString(1, criterio);
+
+            }
+            //eejecutar la sentencia 
+            // executeQuery para sentencia select
+            resultset = sentenciaPreparada.executeQuery();
+            if (resultset != null) {
+                lista = new ArrayList();
+
+            } else {
+                return null;
+            }
+            Aula p = null;
+            paquetedias dias = null;
+            paquetediasDAO operaciondias;
+            //recorre resultset
+            while (resultset.next()) {//mientras haya un siguiente registro por leer
+                    String tipoAula =resultset.getString("p.tipo_Aula");
+                    
+                 if(tipoAula.equals("Laboratorio") == true){
+                    p = new aulaLaboratorio();
+                    existenciaTipoAula = 1;
+                     System.out.println("Escogió Aula Laboratorio");
+                } else if (tipoAula.equals("Aula Grande") == true) {
+                    p = new aulaGrande();
+                    existenciaTipoAula = 2;
+                     System.out.println("Escogió Aula Grande");
+
+                } else if (tipoAula.equals("Aula Pequeño") == true) {
+                    p = new aulaPequeña();
+                    existenciaTipoAula = 3;
+                      System.out.println("Escogió Aula Pequeña");
+
+                }
+                else if (tipoAula.equals("Auditorio") == true) {
+                    p = new aulaAuditorio();
+                    existenciaTipoAula = 4;
+                      System.out.println("Escogió Aula Auditorio");
+
+                }                 
+                 
+                operaciondias = new paquetediasDAO();
+                if(existenciaTipoAula == 1){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+
+                    p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
+                    p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+
+                }
+                else if(existenciaTipoAula == 2){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
+                    p.setProyector(resultset.getBoolean("p.proyector"));
+
+                }
+                else if(existenciaTipoAula == 3){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
+                    p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+
+                }
+                else if(existenciaTipoAula == 4){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
+                    p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
+
+                }
+                
+                lista.add(p);
+
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("error en consultar Aulas");
+            System.out.println(sqle.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException sqle) {
+                System.out.println("error en cerrar consultar Aulas");
+                System.out.println(sqle.getMessage());
+            }
+        }
+
+        return lista;
+    }
+    
      @Override
     public ArrayList<Aula> consultaAulas(String criterio) {
         ArrayList<Aula> lista = null;
