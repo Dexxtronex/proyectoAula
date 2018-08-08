@@ -88,6 +88,7 @@ public void cargarTablaTipo(String criterio,String tipo){
         jTextFieldbuscar = new javax.swing.JTextField();
         jComboBoxBuscar = new javax.swing.JComboBox<>();
         jButtonBuscarAula = new javax.swing.JButton();
+        jButtonVer = new javax.swing.JButton();
         jButtonNuevo = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
@@ -123,6 +124,14 @@ public void cargarTablaTipo(String criterio,String tipo){
             }
         });
         jPanel1.add(jButtonBuscarAula);
+
+        jButtonVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/detailed3x_87019.png"))); // NOI18N
+        jButtonVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonVer);
 
         jButtonNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesIconos/new_page_document_16676.png"))); // NOI18N
         jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -179,8 +188,8 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
                 "Esta Seguro de Eliminar el Producto?", "Mensaje",
                 JOptionPane.YES_NO_OPTION);
         
-        if(i==JOptionPane.YES_NO_OPTION){
-EliminarProducto();
+        if(i==JOptionPane.YES_NO_OPTION){   
+                EliminarProducto();
         }
 
     }//GEN-LAST:event_jButtonEliminarActionPerformed
@@ -219,6 +228,25 @@ EliminarProducto();
  cargarTablaTipo(jTextFieldbuscar.getText(),jComboBoxBuscar.getSelectedItem().toString());
  // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldbuscarActionPerformed
+
+    private void jButtonVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerActionPerformed
+               int fila = jTableAula.getSelectedRow();
+                 
+
+        if(fila >=0 ){
+            String codigo  = jTableAula.getValueAt(fila,1).toString();
+            JFrameVisualizar obj = new JFrameVisualizar(codigo);
+        obj.setJFrameListar(this);
+        obj.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Error, seleccione una aula para Visualizar");
+        }
+        
+
+
+
+    }//GEN-LAST:event_jButtonVerActionPerformed
 private void EliminarProducto(){
     objAulaDao = new aulaDAO();
     int fila = jTableAula.getSelectedRow();
@@ -226,7 +254,7 @@ private void EliminarProducto(){
        JOptionPane.showMessageDialog(null, "Eliminacion correcta de Aula");
        cargarTabla("");
    }else{
-              JOptionPane.showMessageDialog(null, "ERROR Eliminacion correcta de Aula");
+              JOptionPane.showMessageDialog(null, "ERROR, No se puede eliminar una AULA con Reservacion");
 
    }
 }
@@ -236,6 +264,7 @@ private void EliminarProducto(){
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonNuevo;
+    private javax.swing.JButton jButtonVer;
     private javax.swing.JComboBox<String> jComboBoxBuscar;
     private javax.swing.JLabel jLabelBuscar;
     private javax.swing.JPanel jPanel1;

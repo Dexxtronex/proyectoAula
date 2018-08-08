@@ -46,28 +46,28 @@ public class aulaDAO implements Interfaz_OperacionesSala{
         if(au instanceof aulaLaboratorio){
             sql = "insert into aula "
                 + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
-                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula,numero_Computadoras,nombre_Pasante) "
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,cantidad_Reservacion,tipo_Aula,numero_Computadoras,nombre_Pasante) "
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=1;
         }
         else if(au instanceof aulaGrande){
             sql = "insert into aula "
                 + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
-                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula,tela_Proyector,proyector) "
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,cantidad_Reservacion,tipo_Aula,tela_Proyector,proyector) "
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=2;
         }
         else if(au instanceof aulaPequeña){
             sql = "insert into aula "
                 + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
-                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula) "
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,cantidad_Reservacion,tipo_Aula) "
                 + "values (?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=3;
         }
         else if(au instanceof aulaAuditorio){
             sql = "insert into aula "
                 + "(codigo,Capacidad_alumnos,Cantidad_Pizarras,numeros_pupitres, tipo_ventilacion,"
-                + "cantidad_ventilacion,ruta_imagen, foto,idDias,idReservacion,tipo_Aula,cantidad_Parlantes,cantidad_Microfonos) "
+                + "cantidad_ventilacion,ruta_imagen, foto,idDias,cantidad_Reservacion,tipo_Aula,cantidad_Parlantes,cantidad_Microfonos) "
                 + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             existenciaTipoAula=4;
         }
@@ -139,7 +139,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, numero_Computadoras = ?, nombre_Pasante = ?"+ " WHERE id = '"+ au.getId() +"'";
+                    + "foto = ?,idDias = ?, cantidad_Reservacion = ?, tipo_Aula = ?, numero_Computadoras = ?, nombre_Pasante = ?"+ " WHERE id = '"+ au.getId() +"'";
                 System.out.println("Existencia Aula Laboratorio");
             existenciaTipoAula=1;
         }
@@ -148,7 +148,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?, tela_Proyector = ?, proyector = ?"+ " WHERE id = '"+ au.getId() +"'";
+                    + "foto = ?,idDias = ?, cantidad_Reservacion = ?, tipo_Aula = ?, tela_Proyector = ?, proyector = ?"+ " WHERE id = '"+ au.getId() +"'";
                            System.out.println("Existencia Aula Grande");
 
             existenciaTipoAula=2;
@@ -158,7 +158,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?"+ " WHERE id = '"+ au.getId() +"'";
+                    + "foto = ?,idDias = ?, cantidad_Reservacion = ?, tipo_Aula = ?"+ " WHERE id = '"+ au.getId() +"'";
                    System.out.println("Existencia Aula Pequeña");
 
             existenciaTipoAula=3;
@@ -170,7 +170,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
                     + "Capacidad_alumnos = ?,Cantidad_Pizarras = ?,"
                     + "numeros_pupitres = ?, tipo_ventilacion = ?,"
                     + "cantidad_ventilacion = ?, ruta_imagen = ?, "
-                    + "foto = ?,idDias = ?, idReservacion = ?, tipo_Aula = ?,"
+                    + "foto = ?,idDias = ?, cantidad_Reservacion = ?, tipo_Aula = ?,"
                     + "cantidad_Parlantes = ?, cantidad_Microfonos = ?"+ " WHERE id = '"+ au.getId() +"'"; 
         
                    System.out.println("Existencia Aula AUDITORIO");
@@ -384,7 +384,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
 
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
@@ -406,7 +406,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
                     p.setProyector(resultset.getBoolean("p.proyector"));
 
@@ -427,7 +427,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
 
@@ -448,7 +448,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
                     p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
 
@@ -559,7 +559,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
 
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
@@ -581,7 +581,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
                     p.setProyector(resultset.getBoolean("p.proyector"));
 
@@ -602,7 +602,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
 
@@ -623,7 +623,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setDias(dias);
                     p.setIdDias(resultset.getInt("p.idDias"));
                     p.setTipoAula(resultset.getString("p.tipo_Aula"));
-                    p.setIdReservacion(resultset.getInt("p.idReservacion"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
                     p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
 
@@ -656,7 +656,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
         try {
             // preparar la sentencia
             //sentencia para actualizacion
-            String sql = "DELETE FROM aula WHERE id = '" + au.getId()+ "'";
+            String sql = "DELETE FROM aula WHERE id = '" + au.getId()+ "' and cantidad_Reservacion = 0";
 
             sentenciaPreparada = con.prepareStatement(sql);
 
@@ -685,7 +685,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
         try {
             // preparar la sentencia
             //sentencia para actualizacion
-            String sql = "DELETE FROM aula WHERE id = '" + id+ "'";
+            String sql = "DELETE FROM aula WHERE id = '" + id+ "' and cantidad_Reservacion = 0";
 
             sentenciaPreparada = con.prepareStatement(sql);
 
