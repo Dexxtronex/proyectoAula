@@ -264,6 +264,50 @@ public class reservacionDAO {
 
         return lista;
     }
+     public int existenciaReservacionPorCodigo(String criterio) {
+        int respuesta = 0;
+        
+        micon = new MiConexion();
+        con = micon.getConection(); // mi clase de obtencion
+         //String query2 = "select * from producto where estado=1 and talla='s'";
+       String query = "select * from reservacion as p where"
+                + " p.id_aula='" + criterio + "' ";
+
+        // preparar la sentencia
+        try {
+
+                sentenciaPreparada = con.prepareStatement(query);
+             
+            //eejecutar la sentencia 
+            // executeQuery para sentencia select
+            resultset = sentenciaPreparada.executeQuery();
+            if (resultset == null) {
+                                return 0;
+            }
+            
+            //recorre resultset
+            while (resultset.next()) {//mientras haya un siguiente registro por leer
+              
+                if(criterio.equals(resultset.getString("p.id_aula"))==true){
+                    respuesta++;
+                }
+               
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("error en consultar existencia RESERVACION ");
+            System.out.println(sqle.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException sqle) {
+                System.out.println("error en cerrar RESERVACION: cerrar conexion");
+                System.out.println(sqle.getMessage());
+            }
+        }
+
+        return respuesta ;
+    }
      
     public int eliminarPorId(int id) {
         //obtener conexion
@@ -294,4 +338,88 @@ public class reservacionDAO {
         }
         return r;
     }
+    public ArrayList<Reservacion> consultaReservacionPorTipo(String criterio,String tipo) {
+        ArrayList<Reservacion> lista = null;
+        //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
+        //cuando p.estado sea igual a 1 y p.idecategoria sea igual a c.id
+// consultar
+        micon = new MiConexion();
+        con = micon.getConection(); // mi clase de obtencion
+        int existenciaTipoAula = 0;
+        //String query2 = "select * from producto where estado=1 and talla='s'";
+        String query =null;
+
+        // preparar la sentencia
+        try {
+
+            if (criterio.equals("")) {
+                query = "select * from reservacion as c";
+
+                sentenciaPreparada = con.prepareStatement(query);
+            } else { // si hay criterio de busqueda
+                query = "select * from aula as p, reservacion as c where"
+                + "  p.id =c.id_aula ";
+
+                 //query = query + " and p.codigo=?"; // debe escribir igualito
+//          
+                   if(tipo.equals("ID")){
+                      query = query + " and c.id_reservacion like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }else  if(tipo.equals("ENCARGADO")){
+                      query = query + " and c.encargado like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }else  if(tipo.equals("CODIGO")){
+                      query = query + " and c.codigo like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+
+                   }
+                
+                sentenciaPreparada = con.prepareStatement(query);
+           sentenciaPreparada.setString(1, criterio);
+
+            }
+            //eejecutar la sentencia 
+            // executeQuery para sentencia select
+            resultset = sentenciaPreparada.executeQuery();
+            if (resultset != null) {
+                lista = new ArrayList();
+
+            } else {
+                return null;
+            }
+            Reservacion obj = null;
+            //recorre resultset
+            while (resultset.next()) {//mientras haya un siguiente registro por leer
+                    
+                obj = new Reservacion();
+                obj.setId_reservacion(resultset.getInt("c.id_reservacion"));
+                obj.setId_aula(resultset.getInt("c.id_aula"));
+                obj.setCodigo(resultset.getString("c.codigo"));
+                obj.setEncargado(resultset.getString("c.encargado"));
+                obj.setDia_letra(resultset.getString("c.dia_letra"));
+                obj.setDia(resultset.getInt("c.dia"));
+                obj.setMes(resultset.getInt("c.mes"));
+                obj.setAño(resultset.getInt("c.anio"));
+                obj.setHora_inicio(resultset.getInt("c.hora_inicio"));
+                obj.setHora_fin(resultset.getInt("c.hora_fin"));
+                
+                
+                lista.add(obj);
+
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("error en consultar reservacion");
+            System.out.println(sqle.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException sqle) {
+                System.out.println("error en cerrar consultar reservacion");
+                System.out.println(sqle.getMessage());
+            }
+        }
+
+        return lista;
+    }
+
 }
