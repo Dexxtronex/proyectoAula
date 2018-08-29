@@ -269,7 +269,7 @@ public class aulaDAO implements Interfaz_OperacionesSala{
             //recorre resultset
             while (resultset.next()) {//mientras haya un siguiente registro por leer
 
-              
+                System.out.println("VALOR DEL ID A BUSCAR ES DE "+resultset.getInt("p.id"));
                return   resultset.getInt("p.id");
                 
 
@@ -368,6 +368,8 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                 }                 
                  
                 operaciondias = new paquetediasDAO();
+                                    reservacionDAO op = new reservacionDAO();
+
                 if(existenciaTipoAula == 1){
                     p.setId(resultset.getInt("p.id"));
                     p.setCodigo(resultset.getString("p.codigo"));
@@ -388,7 +390,9 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
 
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
-
+                    
+                    
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
                 }
                 else if(existenciaTipoAula == 2){
                     p.setId(resultset.getInt("p.id"));
@@ -409,6 +413,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
                     p.setProyector(resultset.getBoolean("p.proyector"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 else if(existenciaTipoAula == 3){
@@ -430,6 +435,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 else if(existenciaTipoAula == 4){
@@ -451,6 +457,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
                     p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 
@@ -543,6 +550,8 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                 }                 
                  
                 operaciondias = new paquetediasDAO();
+                                    reservacionDAO op = new reservacionDAO();
+
                 if(existenciaTipoAula == 1){
                     p.setId(resultset.getInt("p.id"));
                     p.setCodigo(resultset.getString("p.codigo"));
@@ -563,6 +572,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
 
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 else if(existenciaTipoAula == 2){
@@ -584,6 +594,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
                     p.setProyector(resultset.getBoolean("p.proyector"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 else if(existenciaTipoAula == 3){
@@ -605,6 +616,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
                     p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 else if(existenciaTipoAula == 4){
@@ -626,6 +638,7 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
                     p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
                     p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
                     p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
 
                 }
                 
@@ -646,6 +659,184 @@ public ArrayList<Aula> consultaAulasPorTipo(String criterio,String tipo) {
         }
 
         return lista;
+    }
+    
+    public Aula consultaAulas1(String criterio) {
+        //taer todos los campos de la tabla producto a la cual se llama p, y tambien de la tabla categoria llamado c 
+        //cuando p.estado sea igual a 1 y p.idecategoria sea igual a c.id
+// consultar
+        micon = new MiConexion();
+        con = micon.getConection(); // mi clase de obtencion
+        int existenciaTipoAula = 0;
+        //String query2 = "select * from producto where estado=1 and talla='s'";
+        String query =null;
+
+        // preparar la sentencia
+        try {
+
+            if (criterio.equals("")) {
+                query = "select * from aula as p";
+
+                sentenciaPreparada = con.prepareStatement(query);
+            } else { // si hay criterio de busqueda
+                query = "select * from aula as p, paquetedias as c where"
+                + "  p.idDias=c.id ";
+
+                 //query = query + " and p.codigo=?"; // debe escribir igualito
+//
+                query = query + " and p.id like concat('%',?,'%')"; //bastaconqueloque usuario escriba este 
+                
+                sentenciaPreparada = con.prepareStatement(query);
+           sentenciaPreparada.setString(1, criterio);
+
+            }
+            //eejecutar la sentencia 
+            // executeQuery para sentencia select
+            resultset = sentenciaPreparada.executeQuery();
+            if (resultset != null) {
+                
+
+            } else {
+                return null;
+            }
+            Aula p = null;
+            paquetedias dias = null;
+            paquetediasDAO operaciondias;
+            //recorre resultset
+            while (resultset.next()) {//mientras haya un siguiente registro por leer
+                    String tipoAula =resultset.getString("p.tipo_Aula");
+                    
+                 if(tipoAula.equals("Laboratorio") == true){
+                    p = new aulaLaboratorio();
+                    existenciaTipoAula = 1;
+                     System.out.println("Escogió Aula Laboratorio");
+                } else if (tipoAula.equals("Aula Grande") == true) {
+                    p = new aulaGrande();
+                    existenciaTipoAula = 2;
+                     System.out.println("Escogió Aula Grande");
+
+                } else if (tipoAula.equals("Aula Pequeño") == true) {
+                    p = new aulaPequeña();
+                    existenciaTipoAula = 3;
+                      System.out.println("Escogió Aula Pequeña");
+
+                }
+                else if (tipoAula.equals("Auditorio") == true) {
+                    p = new aulaAuditorio();
+                    existenciaTipoAula = 4;
+                      System.out.println("Escogió Aula Auditorio");
+
+                }                 
+                 
+                operaciondias = new paquetediasDAO();
+                                    reservacionDAO op = new reservacionDAO();
+
+                if(existenciaTipoAula == 1){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
+
+                    p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
+                    p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
+
+                }
+                else if(existenciaTipoAula == 2){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
+                    p.setTela_Proyector(resultset.getBoolean("p.tela_Proyector"));
+                    p.setProyector(resultset.getBoolean("p.proyector"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
+
+                }
+                else if(existenciaTipoAula == 3){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
+                    p.setNumero_Computadoras(resultset.getInt("p.numero_Computadoras"));
+                    p.setNombrePasante(resultset.getString("p.nombre_Pasante"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
+
+                }
+                else if(existenciaTipoAula == 4){
+                    p.setId(resultset.getInt("p.id"));
+                    p.setCodigo(resultset.getString("p.codigo"));
+                    p.setCapacidad_alumnos(resultset.getInt("p.Capacidad_alumnos"));
+                    p.setCantidad_Pizarras(resultset.getInt("p.Cantidad_Pizarras"));
+                    p.setNumeros_pupitres(resultset.getInt("p.numeros_pupitres"));
+                    p.setTipo_ventilacion(resultset.getString("p.tipo_ventilacion"));
+                    p.setCantidad_ventilacion(resultset.getInt("p.cantidad_ventilacion"));
+                    p.setRuta_imagen(resultset.getString("p.ruta_imagen"));
+                    p.setFoto(resultset.getBlob("p.foto"));
+
+                    dias = operaciondias.consultaId(Integer.toString(resultset.getInt("p.idDias")));
+
+                    p.setDias(dias);
+                    p.setIdDias(resultset.getInt("p.idDias"));
+                    p.setTipoAula(resultset.getString("p.tipo_Aula"));
+                    p.setIdReservacion(resultset.getInt("p.cantidad_Reservacion"));
+                    p.setCantidad_Parlantes(resultset.getInt("p.cantidad_Parlantes"));
+                    p.setCantidad_Microfonos(resultset.getInt("p.cantidad_Microfonos"));
+                    p.setReservacion(op.consultaAulasPorTipo(Integer.toString(resultset.getInt("p.id"))));
+
+                }
+                
+                return p;
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println("error en consultar Aulas");
+            System.out.println(sqle.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException sqle) {
+                System.out.println("error en cerrar consultar Aulas");
+                System.out.println(sqle.getMessage());
+            }
+        }
+
+        return null;
     }
      @Override
     public int eliminar(Aula au) {

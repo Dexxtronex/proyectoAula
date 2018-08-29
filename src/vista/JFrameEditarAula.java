@@ -1145,20 +1145,19 @@ private void cargarEditado(String codigo){
          }
          System.out.println("tipo de aula"+lista.get(i).toString());
          id = lista.get(i).getId();
-         this.JComboBoxTipoAula.setSelectedItem(lista.get(i).getTipoAula());
-         
-        this.JComboBoxTipoHorario.setSelectedItem(lista.get(i).getDias().getCodigo());
+       
+        this.JTextFieldCodigo.setText(lista.get(i).getCodigo());
+         this.JComboBoxTipoHorario.setSelectedItem(lista.get(i).getDias().getCodigo());
         this.JComboBoxTipoVentilador.setSelectedItem(lista.get(i).getTipo_ventilacion());
         this.JTextFieldCapa_Alumno.setText(Integer.toString(lista.get(i).getCapacidad_alumnos()));
         this.JTextFieldCapa_Pizarra.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldCodigo.setText(lista.get(i).getCodigo());
-        this.JTextFieldHora_Fin.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldHora_Inicio.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldHora_Fin.setText(Integer.toString(lista.get(i).getDias().getHora_fin()));
+        this.JTextFieldHora_Inicio.setText(Integer.toString(lista.get(i).getDias().getHora_inicio()));
         this.JTextFieldNombreHorario.setText((lista.get(i).getDias().getCodigo()));
         this.JTextFieldNombrePasante.setText(lista.get(i).getNombrePasante());
-        this.JTextFieldNumePupitres.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldNumeroComputadoras.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
-        this.JTextFieldNumeroVentiladores.setText(Integer.toString(lista.get(i).getCantidad_Pizarras()));
+        this.JTextFieldNumePupitres.setText(Integer.toString(lista.get(i).getNumeros_pupitres()));
+        this.JTextFieldNumeroComputadoras.setText(Integer.toString(lista.get(i).getNumero_Computadoras()));
+        this.JTextFieldNumeroVentiladores.setText(Integer.toString(lista.get(i).getCantidad_ventilacion()));
         this.JTextFieldRutaImagen.setText(lista.get(i).getRuta_imagen());
          this.jCheckBoxDomingo.setSelected((lista.get(i).getDias().isDomingo()));
         this.jCheckBoxJueves.setSelected((lista.get(i).getDias().isJueves()));
