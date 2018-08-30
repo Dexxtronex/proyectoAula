@@ -5,7 +5,9 @@
  */
 package vista;
 
+import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.entidadesDTO.Reservacion;
 import modelo.operacionesDAO.aulaDAO;
@@ -25,6 +27,7 @@ public class JFrameListarReservaciones extends javax.swing.JFrame {
     public JFrameListarReservaciones() {
         initComponents();
         cargarTablaReservaciones("", jComboBoxBuscar.getSelectedItem().toString());
+        setLocationRelativeTo(null);
 
     }
 
@@ -39,21 +42,25 @@ public class JFrameListarReservaciones extends javax.swing.JFrame {
 
         jTextFieldbuscar = new javax.swing.JTextField();
         jComboBoxBuscar = new javax.swing.JComboBox<>();
-        jLabelBuscar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReservacion = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldbuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 120, -1));
 
+        jComboBoxBuscar.setBackground(null);
         jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "CODIGO", "ENCARGADO" }));
-
-        jLabelBuscar.setText("Buscar:");
+        getContentPane().add(jComboBoxBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 66, -1));
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -70,29 +77,28 @@ public class JFrameListarReservaciones extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableReservacion);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabelBuscar)
-                .addGap(34, 34, 34)
-                .addComponent(jTextFieldbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jComboBoxBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelBuscar)
-                    .addComponent(jTextFieldbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, 692, 280));
+
+        jButton2.setBackground(null);
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, -1, -1));
+
+        jButton1.setBackground(null);
+        jButton1.setText("Crear Reservacion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/fondo_listar_reservacion_proyectoPOOParcial2.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,6 +107,42 @@ public class JFrameListarReservaciones extends javax.swing.JFrame {
         cargarTablaReservaciones(jTextFieldbuscar.getText(),jComboBoxBuscar.getSelectedItem().toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldbuscarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         int fila = jTableReservacion.getSelectedRow();
+        if(fila <0){
+            JOptionPane.showMessageDialog(null,"Selecione una reservacion en la lista para eliminar");
+        }else{
+             int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
+                "Esta Seguro de Eliminar una Reservacion?", "Mensaje",
+                JOptionPane.YES_NO_OPTION);
+        
+        if(i==JOptionPane.YES_NO_OPTION){   
+               
+            EliminarReservacion();
+        }
+        }
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrameNuevaReservacion obj = new JFrameNuevaReservacion();
+        obj.setVisible(true);
+        dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+     private void EliminarReservacion(){
+    reservacionDAO OBJ  = new reservacionDAO();
+    int fila = jTableReservacion.getSelectedRow();
+   if( OBJ.eliminarPorId(Integer.parseInt( jTableReservacion.getValueAt(fila, 0).toString()))==1){
+       JOptionPane.showMessageDialog(null, "Eliminacion correcta de RESERVACION ");
+       cargarTablaReservaciones("", jComboBoxBuscar.getSelectedItem().toString());
+   }else{
+              JOptionPane.showMessageDialog(null, "ERROR, No se puede eliminar una Reservacion");
+
+   }
+}
     private void cargarTablaReservaciones(String buscar, String tipo){
         reservacionDAO reservdao = new reservacionDAO();
         aulaDAO obj = new aulaDAO ();
@@ -163,8 +205,10 @@ public class JFrameListarReservaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxBuscar;
-    private javax.swing.JLabel jLabelBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableReservacion;
     private javax.swing.JTextField jTextFieldbuscar;

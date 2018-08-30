@@ -45,6 +45,8 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
     aulaDAO objAulaDao = null;
     public JFrameNuevaAula() {
         initComponents();
+                setLocationRelativeTo(null);
+
         image = new ImageIcon();
         cargarComboBoxPaqueteDias();
         //deshabilitarPanelLaboratorio();
@@ -668,6 +670,11 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
                 JTextFieldNombrePasanteActionPerformed(evt);
             }
         });
+        JTextFieldNombrePasante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNombrePasanteKeyTyped(evt);
+            }
+        });
         jPanelAtributosExtras2.add(JTextFieldNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
 
         jPanel1.add(jPanelAtributosExtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 430, 90));
@@ -1140,6 +1147,19 @@ public class JFrameNuevaAula extends javax.swing.JFrame {
     evt.consume(); 
  }        // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldNumeroComputadorasKeyTyped
+
+    private void JTextFieldNombrePasanteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldNombrePasanteKeyTyped
+       char c1 = evt.getKeyChar();
+ int numerocaracteres = 50;
+ 
+ if(JTextFieldNombrePasante.getText().length()>= numerocaracteres){
+     
+              evt.consume();
+   
+          
+ }   
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldNombrePasanteKeyTyped
 
     /**
      * @param args the command line arguments

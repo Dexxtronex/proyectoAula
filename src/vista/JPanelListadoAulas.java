@@ -27,7 +27,9 @@ public class JPanelListadoAulas extends javax.swing.JPanel {
      */
     public JPanelListadoAulas() {
         initComponents();
-        cargarTabla("");
+        cargarTabla("");  
+
+
     }
    
 public void cargarTabla(String criterio){

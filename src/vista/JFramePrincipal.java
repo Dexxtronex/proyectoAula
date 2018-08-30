@@ -21,7 +21,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
      * Creates new form JFramePrincipal
      */
     public JFramePrincipal() {
-        initComponents();
+        initComponents();        setLocationRelativeTo(null);
+
         this.setTitle("Sistema de Gestión de Aulas");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

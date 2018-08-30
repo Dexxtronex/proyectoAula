@@ -43,7 +43,8 @@ public class JFrameVisualizar extends javax.swing.JFrame {
     aulaDAO objAulaDao = null;
     private int id = 0;
     public JFrameVisualizar() {
-        initComponents();
+        initComponents();        setLocationRelativeTo(null);
+
         cargarComboBoxPaqueteDias();
        // deshabilitarPanelLaboratorio();
         jLabelNombreHorario.setVisible(false);

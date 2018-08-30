@@ -42,7 +42,8 @@ paquetediasDAO objPaqueteDao= null;
     ArrayList<Reservacion> lista = null;
     
     public JFrameNuevaReservacion() {
-        initComponents();
+        initComponents();        setLocationRelativeTo(null);
+
         deshabilitarPanelLaboratorio();
         jPanelAtributosExtras2.setEnabled(false);
         jPanelAtributosAuditorio.setEnabled(false);
@@ -50,7 +51,6 @@ paquetediasDAO objPaqueteDao= null;
         jComboBoxCODIGOAULA.requestFocus();
         jPanel5.setEnabled(false);
          bloqueoCamposTexto();
-         JTextFieldRutaImagen.setEnabled(false);
          deshabilitarJCheckBoxTipoHorario();
                  jPanelDias.setEnabled(false);
                          jCheckBoxCrearHorario.setEnabled(false);
@@ -143,7 +143,6 @@ paquetediasDAO objPaqueteDao= null;
         this.JTextFieldNumePupitres.setEnabled(false);
         this.JTextFieldNumeroComputadoras.setEnabled(false);
         this.JTextFieldNumeroVentiladores.setEnabled(false);
-        this.JTextFieldRutaImagen.setEnabled(false);
    }
 
     
@@ -171,32 +170,25 @@ paquetediasDAO objPaqueteDao= null;
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jComboBoxCODIGOAULA = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReservacion = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        JTextFieldCodigo1 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        JTextFieldHora_Fin1 = new javax.swing.JTextField();
-        JTextFieldHora_Inicio1 = new javax.swing.JTextField();
-        JTextFieldEncargado = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBoxCODIGOAULA = new javax.swing.JComboBox<>();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        JTextFieldEncargado = new javax.swing.JTextField();
+        JTextFieldHora_Fin1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        JTextFieldHora_Inicio1 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        JTextFieldCodigo1 = new javax.swing.JTextField();
         jLabelNombreHorario = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanelAtributosExtras2 = new javax.swing.JPanel();
@@ -214,11 +206,9 @@ paquetediasDAO objPaqueteDao= null;
         jLabelNumeroMicrofonos = new javax.swing.JLabel();
         JTextFieldHora_Fin = new javax.swing.JTextField();
         JTextFieldHora_Inicio = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
         JTextFieldNumeroVentiladores = new javax.swing.JTextField();
         JComboBoxTipoAula = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         JTextFieldNombreHorario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -226,7 +216,6 @@ paquetediasDAO objPaqueteDao= null;
         jLabel27 = new javax.swing.JLabel();
         jCheckBoxCrearHorario = new javax.swing.JCheckBox();
         JComboBoxTipoHorario = new javax.swing.JComboBox();
-        JTextFieldRutaImagen = new javax.swing.JTextField();
         jPanelDias = new javax.swing.JPanel();
         jCheckBoxLunes = new javax.swing.JCheckBox();
         jCheckBoxMiercoles = new javax.swing.JCheckBox();
@@ -240,14 +229,31 @@ paquetediasDAO objPaqueteDao= null;
         JComboBoxTipoVentilador = new javax.swing.JComboBox();
         JTextFieldCapa_Pizarra = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxCODIGOAULA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        jComboBoxCODIGOAULA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCODIGOAULAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxCODIGOAULA, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 179, -1));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -264,49 +270,20 @@ paquetediasDAO objPaqueteDao= null;
         ));
         jScrollPane1.setViewportView(jTableReservacion);
 
-        jLabel1.setText("Reservaciones Hechas");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 459, 118));
 
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel11.setText("COD. Reservacion:");
-
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel10.setText("HORA INICIO:");
-
-        JTextFieldCodigo1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        JTextFieldCodigo1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldCodigo1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldCodigo1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel12.setText("FECHA:");
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel16.setText("HORA FIN:");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel17.setText("ENCARGADO:");
-
-        JTextFieldHora_Fin1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldHora_Fin1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldHora_Fin1ActionPerformed(evt);
-            }
-        });
-
-        JTextFieldHora_Inicio1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldHora_Inicio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldHora_Inicio1ActionPerformed(evt);
-            }
-        });
-        JTextFieldHora_Inicio1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JTextFieldHora_Inicio1KeyTyped(evt);
-            }
-        });
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 119, -1));
 
         JTextFieldEncargado.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldEncargado.addActionListener(new java.awt.event.ActionListener() {
@@ -319,140 +296,79 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldEncargadoKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 250, -1));
 
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel13.setText("DATOS PARA RESERVAR");
-
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JTextFieldHora_Fin1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldHora_Fin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JTextFieldHora_Fin1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(121, 121, 121))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(JTextFieldHora_Fin1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(JTextFieldHora_Inicio1)
-                                    .addComponent(JTextFieldEncargado)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(JTextFieldCodigo1)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(JTextFieldCodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(JTextFieldHora_Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel16)
-                    .addComponent(JTextFieldHora_Fin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(JTextFieldEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jLabel2.setText("CODIGO AULA:");
-
-        jComboBoxCODIGOAULA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
-        jComboBoxCODIGOAULA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxCODIGOAULAActionPerformed(evt);
+        JTextFieldHora_Fin1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldHora_Fin1KeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldHora_Fin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 250, -1));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel16.setText("HORA FIN:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 119, -1));
 
-        jLabel3.setText("INFORMACION DEL AULA:");
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel10.setText("HORA INICIO:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 119, -1));
+
+        JTextFieldHora_Inicio1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldHora_Inicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldHora_Inicio1ActionPerformed(evt);
+            }
+        });
+        JTextFieldHora_Inicio1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldHora_Inicio1KeyTyped(evt);
+            }
+        });
+        getContentPane().add(JTextFieldHora_Inicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 250, -1));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 252, -1));
+
+        jLabel12.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel12.setText("FECHA:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 119, -1));
+
+        jLabel11.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel11.setText("COD. Reservacion:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 117, -1));
+
+        JTextFieldCodigo1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        JTextFieldCodigo1.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldCodigo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldCodigo1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JTextFieldCodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 252, 29));
 
         jLabelNombreHorario.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabelNombreHorario.setText("Nombre Horario");
+        getContentPane().add(jLabelNombreHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 330, 150, 20));
 
         jLabel28.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel28.setText("NUMERO VENTILADORES:");
+        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 150, 10));
 
         jLabel9.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel9.setText("HORA FIN:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 119, -1));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel14.setText("HORA DE INICIO:");
-
-        jLabel29.setText("H:M:S      00:00:00");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, 119, -1));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel5.setText("CAPACIDAD PIZARRAS:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 160, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -489,7 +405,7 @@ paquetediasDAO objPaqueteDao= null;
         });
         jPanelAtributosExtras2.add(JTextFieldNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
 
-        jPanel5.add(jPanelAtributosExtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 430, 90));
+        jPanel5.add(jPanelAtributosExtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
 
         jPanelAtributosAulaGrande.setBackground(new java.awt.Color(255, 255, 255));
         jPanelAtributosAulaGrande.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -546,12 +462,15 @@ paquetediasDAO objPaqueteDao= null;
 
         jPanel5.add(jPanelAtributosAuditorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
 
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 420, -1));
+
         JTextFieldHora_Fin.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldHora_Fin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextFieldHora_FinActionPerformed(evt);
             }
         });
+        getContentPane().add(JTextFieldHora_Fin, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 260, -1));
 
         JTextFieldHora_Inicio.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldHora_Inicio.addActionListener(new java.awt.event.ActionListener() {
@@ -564,9 +483,7 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldHora_InicioKeyTyped(evt);
             }
         });
-
-        jLabel30.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel30.setText("RUTA IMAGEN:");
+        getContentPane().add(JTextFieldHora_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 260, -1));
 
         JTextFieldNumeroVentiladores.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNumeroVentiladores.addActionListener(new java.awt.event.ActionListener() {
@@ -579,6 +496,7 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldNumeroVentiladoresKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldNumeroVentiladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 270, 250, -1));
 
         JComboBoxTipoAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "....", "Aula Pequeño", "Aula Grande", "Laboratorio", "Auditorio" }));
         JComboBoxTipoAula.addItemListener(new java.awt.event.ItemListener() {
@@ -607,14 +525,15 @@ paquetediasDAO objPaqueteDao= null;
                 JComboBoxTipoAulaKeyPressed(evt);
             }
         });
+        getContentPane().add(JComboBoxTipoAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 250, -1));
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel7.setText("TIPO AULA");
-
-        jLabel25.setText("H:M:S      00:00:00");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel6.setText("CAPACIDAD ALUMNO:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 150, -1));
 
         JTextFieldNombreHorario.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNombreHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -627,9 +546,11 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldNombreHorarioKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldNombreHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 250, -1));
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel8.setText("TIPO VENTILADOR:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 120, 30));
 
         JTextFieldNumePupitres.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldNumePupitres.addActionListener(new java.awt.event.ActionListener() {
@@ -642,9 +563,11 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldNumePupitresKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldNumePupitres, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, 250, -1));
 
         jLabel27.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel27.setText("NUMERO PUPITRES:");
+        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 130, 10));
 
         jCheckBoxCrearHorario.setText("Crear Horario");
         jCheckBoxCrearHorario.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -657,6 +580,7 @@ paquetediasDAO objPaqueteDao= null;
                 jCheckBoxCrearHorarioActionPerformed(evt);
             }
         });
+        getContentPane().add(jCheckBoxCrearHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 300, -1, -1));
 
         JComboBoxTipoHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "...." }));
         JComboBoxTipoHorario.addItemListener(new java.awt.event.ItemListener() {
@@ -685,22 +609,10 @@ paquetediasDAO objPaqueteDao= null;
                 JComboBoxTipoHorarioKeyPressed(evt);
             }
         });
-
-        JTextFieldRutaImagen.setEditable(false);
-        JTextFieldRutaImagen.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldRutaImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldRutaImagenActionPerformed(evt);
-            }
-        });
-        JTextFieldRutaImagen.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JTextFieldRutaImagenKeyTyped(evt);
-            }
-        });
+        getContentPane().add(JComboBoxTipoHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 200, -1));
 
         jPanelDias.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        jPanelDias.setForeground(new java.awt.Color(51, 51, 51));
 
         jCheckBoxLunes.setText("Lunes");
         jCheckBoxLunes.addActionListener(new java.awt.event.ActionListener() {
@@ -723,7 +635,7 @@ paquetediasDAO objPaqueteDao= null;
             }
         });
 
-        jCheckBoxViernes.setText("Viernes");
+        jCheckBoxViernes.setText("Vie");
         jCheckBoxViernes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxViernesActionPerformed(evt);
@@ -737,14 +649,14 @@ paquetediasDAO objPaqueteDao= null;
             }
         });
 
-        jCheckBoxSabado.setText("Sabado");
+        jCheckBoxSabado.setText("Sab");
         jCheckBoxSabado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxSabadoActionPerformed(evt);
             }
         });
 
-        jCheckBoxDomingo.setText("Domingo");
+        jCheckBoxDomingo.setText("Dom");
         jCheckBoxDomingo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxDomingoActionPerformed(evt);
@@ -767,17 +679,16 @@ paquetediasDAO objPaqueteDao= null;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBoxMartes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxDomingo)
-                            .addGroup(jPanelDiasLayout.createSequentialGroup()
-                                .addComponent(jCheckBoxMiercoles)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBoxJueves)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBoxViernes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBoxSabado)))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addComponent(jCheckBoxMiercoles)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxJueves)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxViernes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxSabado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxDomingo)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanelDiasLayout.setVerticalGroup(
             jPanelDiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,11 +702,12 @@ paquetediasDAO objPaqueteDao= null;
                     .addComponent(jCheckBoxMiercoles)
                     .addComponent(jCheckBoxJueves)
                     .addComponent(jCheckBoxViernes)
-                    .addComponent(jCheckBoxSabado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxDomingo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCheckBoxSabado)
+                    .addComponent(jCheckBoxDomingo))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanelDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 410, 60));
 
         JTextFieldCapa_Alumno.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldCapa_Alumno.addActionListener(new java.awt.event.ActionListener() {
@@ -808,6 +720,7 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldCapa_AlumnoKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldCapa_Alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, 250, -1));
 
         JComboBoxTipoVentilador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "....", "Automaticos", "Mecanicos" }));
         JComboBoxTipoVentilador.addItemListener(new java.awt.event.ItemListener() {
@@ -836,6 +749,7 @@ paquetediasDAO objPaqueteDao= null;
                 JComboBoxTipoVentiladorKeyPressed(evt);
             }
         });
+        getContentPane().add(JComboBoxTipoVentilador, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 250, -1));
 
         JTextFieldCapa_Pizarra.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         JTextFieldCapa_Pizarra.addActionListener(new java.awt.event.ActionListener() {
@@ -848,192 +762,13 @@ paquetediasDAO objPaqueteDao= null;
                 JTextFieldCapa_PizarraKeyTyped(evt);
             }
         });
+        getContentPane().add(JTextFieldCapa_Pizarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 250, -1));
 
         jLabel18.setText("Selecionar Horario:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(JTextFieldCapa_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(JTextFieldCapa_Pizarra, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(JTextFieldNumePupitres, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(JComboBoxTipoVentilador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(JTextFieldNumeroVentiladores, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(JTextFieldRutaImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel18)
-                        .addGap(19, 19, 19)
-                        .addComponent(JComboBoxTipoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jCheckBoxCrearHorario))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelNombreHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(JTextFieldNombreHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(JTextFieldHora_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel29))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(JTextFieldHora_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(JComboBoxTipoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(JTextFieldCapa_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(JTextFieldCapa_Pizarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextFieldNumePupitres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(JComboBoxTipoVentilador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextFieldNumeroVentiladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextFieldRutaImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(JComboBoxTipoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBoxCrearHorario))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombreHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextFieldNombreHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jPanelDias, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(JTextFieldHora_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel29)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(JTextFieldHora_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jLabel25)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(JComboBoxTipoAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(48, 48, 48)
-                        .addComponent(jComboBoxCODIGOAULA, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBoxCODIGOAULA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/from_Nueva_Reservacion_ProyectoPOOParcial2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1047,7 +782,17 @@ paquetediasDAO objPaqueteDao= null;
     }//GEN-LAST:event_JTextFieldHora_Inicio1ActionPerformed
 
     private void JTextFieldHora_Inicio1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldHora_Inicio1KeyTyped
-        // TODO add your handling code here:
+      char c = evt.getKeyChar();
+ int numerocaracteres = 2;
+ if((c<'0'||c>'9'))
+        {          
+
+            evt.consume();
+
+        } 
+ if(JTextFieldHora_Inicio1.getText().length()>= numerocaracteres){
+    evt.consume(); 
+ }
     }//GEN-LAST:event_JTextFieldHora_Inicio1KeyTyped
 
     private void JTextFieldCodigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldCodigo1ActionPerformed
@@ -1059,7 +804,18 @@ paquetediasDAO objPaqueteDao= null;
     }//GEN-LAST:event_JTextFieldEncargadoActionPerformed
 
     private void JTextFieldEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldEncargadoKeyTyped
-        // TODO add your handling code here:
+   
+          char c1 = evt.getKeyChar();
+ int numerocaracteres = 50;
+ 
+ if(JTextFieldEncargado.getText().length()>= numerocaracteres){
+     
+              evt.consume();
+   
+          
+ }   
+
+// TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldEncargadoKeyTyped
 
     private void JTextFieldCapa_PizarraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldCapa_PizarraKeyTyped
@@ -1157,14 +913,6 @@ paquetediasDAO objPaqueteDao= null;
     private void jCheckBoxLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxLunesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxLunesActionPerformed
-
-    private void JTextFieldRutaImagenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldRutaImagenKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldRutaImagenKeyTyped
-
-    private void JTextFieldRutaImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldRutaImagenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldRutaImagenActionPerformed
 
     private void JComboBoxTipoHorarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JComboBoxTipoHorarioKeyPressed
         // TODO add your handling code here:
@@ -1366,7 +1114,9 @@ paquetediasDAO objPaqueteDao= null;
     }//GEN-LAST:event_jComboBoxCODIGOAULAActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      try{
         if(validacionHorarioAula() == 1){
+            
             String codigo_reservacion = JTextFieldCodigo1.getText();
         int hora_inicio_reser = Integer.parseInt(JTextFieldHora_Inicio1.getText());
         int hora_fin_reser  = Integer.parseInt(JTextFieldHora_Fin1.getText());
@@ -1412,26 +1162,58 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
           }
 
         
-        }
-        else{
+       
+            
+                
+                       
+                            
+        }else{
             JOptionPane.showMessageDialog(null, "Ingrese un Horario permitido");
         }
         
         
+           } catch(Exception o ){
+                
+               JOptionPane.showMessageDialog(null,"Ingrese todos los campos");
+             }     
+                
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
+        int fila = jTableReservacion.getSelectedRow();
+        if(fila <0){
+            JOptionPane.showMessageDialog(null,"Selecione una reservacion en la lista para eliminar");
+        }else{
+             int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
                 "Esta Seguro de Eliminar una Reservacion?", "Mensaje",
                 JOptionPane.YES_NO_OPTION);
         
         if(i==JOptionPane.YES_NO_OPTION){   
-                EliminarReservacion();
+               
+            EliminarReservacion();
         }
+        }
+       
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void JTextFieldHora_Fin1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextFieldHora_Fin1KeyTyped
+      char c = evt.getKeyChar();
+ int numerocaracteres = 2;
+ if((c<'0'||c>'9'))
+        {          
+
+            evt.consume();
+
+        } 
+ if(JTextFieldHora_Fin1.getText().length()>= numerocaracteres){
+    evt.consume(); 
+ }
+
+
+    }//GEN-LAST:event_JTextFieldHora_Fin1KeyTyped
     private void EliminarReservacion(){
     reservacionDAO OBJ  = new reservacionDAO();
     int fila = jTableReservacion.getSelectedRow();
@@ -1556,7 +1338,12 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
         else if(hora_fin_reser < hora_inicio_aula || hora_inicio_reser > hora_fin_aula){
             return 0;
         }
-        
+        else if( hora_fin_reser == hora_inicio_reser ){
+            return 0;
+        }
+        else if( hora_fin_reser <= hora_inicio_reser ){
+            return 0;
+        }
 
             return respuesta;
     }
@@ -1578,7 +1365,6 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
          if(lista.get(i).getDias() == null){
              System.out.println("esta vacio");
          }
-         System.out.println("tipo de aula"+lista.get(i).toString());
          id = lista.get(i).getId();
          this.JComboBoxTipoHorario.setSelectedItem(lista.get(i).getDias().getCodigo());
         this.JComboBoxTipoVentilador.setSelectedItem(lista.get(i).getTipo_ventilacion());
@@ -1591,7 +1377,6 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
         this.JTextFieldNumePupitres.setText(Integer.toString(lista.get(i).getNumeros_pupitres()));
         this.JTextFieldNumeroComputadoras.setText(Integer.toString(lista.get(i).getNumero_Computadoras()));
         this.JTextFieldNumeroVentiladores.setText(Integer.toString(lista.get(i).getCantidad_ventilacion()));
-        this.JTextFieldRutaImagen.setText(lista.get(i).getRuta_imagen());
          this.jCheckBoxDomingo.setSelected((lista.get(i).getDias().isDomingo()));
         this.jCheckBoxJueves.setSelected((lista.get(i).getDias().isJueves()));
         this.jCheckBoxLunes.setSelected((lista.get(i).getDias().isLunes()));
@@ -1600,15 +1385,18 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
         this.jCheckBoxSabado.setSelected((lista.get(i).getDias().isSabado()));
         this.jCheckBoxViernes.setSelected((lista.get(i).getDias().isViernes()));
         this.JComboBoxTipoAula.setSelectedItem((lista.get(i).getTipoAula()));
+        System.out.println("tipo de aula"+lista.get(i).toString());
+
         if(lista.get(i).getTipoAula().equals("Laboratorio")==true){
-        jPanelAtributosExtras2.setVisible(true);
         jPanelAtributosAuditorio.setVisible(false);
         jPanelAtributosAulaGrande.setVisible(false);
+                jPanelAtributosExtras2.setVisible(true);
+
         JTextFieldNombrePasante.setText((lista.get(i).getNombrePasante()));
         JTextFieldNumeroComputadoras.setText((Integer.toString(lista.get(i).getNumero_Computadoras())));
-
          }
          else if(lista.get(i).getTipoAula().equals("Aula Grande")==true){
+
              jPanelAtributosExtras2.setVisible(false);
         jPanelAtributosAuditorio.setVisible(false);
          jPanelAtributosAulaGrande.setVisible(true);
@@ -1617,10 +1405,12 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
 
          }
          else  if(lista.get(i).getTipoAula().equals("Auditorio")==true){
+
              jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(true);
          jPanelAtributosAulaGrande.setVisible(false);
-                 JTextFieldNumeroParlantes.setText(Integer.toString(lista.get(i).getCantidad_Parlantes()));
+                 jPanelAtributosAuditorio.setVisible(true);
+
+         JTextFieldNumeroParlantes.setText(Integer.toString(lista.get(i).getCantidad_Parlantes()));
         JTextFieldNumeroMicrofonos.setText(Integer.toString(lista.get(i).getCantidad_Microfonos()));
 
          }
@@ -1673,25 +1463,24 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox JComboBoxTipoAula;
-    private javax.swing.JComboBox JComboBoxTipoHorario;
-    private javax.swing.JComboBox JComboBoxTipoVentilador;
-    private javax.swing.JTextField JTextFieldCapa_Alumno;
-    private javax.swing.JTextField JTextFieldCapa_Pizarra;
+    public javax.swing.JComboBox JComboBoxTipoAula;
+    public javax.swing.JComboBox JComboBoxTipoHorario;
+    public javax.swing.JComboBox JComboBoxTipoVentilador;
+    public javax.swing.JTextField JTextFieldCapa_Alumno;
+    public javax.swing.JTextField JTextFieldCapa_Pizarra;
     public javax.swing.JTextField JTextFieldCodigo1;
     public javax.swing.JTextField JTextFieldEncargado;
-    private javax.swing.JTextField JTextFieldHora_Fin;
+    public javax.swing.JTextField JTextFieldHora_Fin;
     public javax.swing.JTextField JTextFieldHora_Fin1;
-    private javax.swing.JTextField JTextFieldHora_Inicio;
+    public javax.swing.JTextField JTextFieldHora_Inicio;
     public javax.swing.JTextField JTextFieldHora_Inicio1;
-    private javax.swing.JTextField JTextFieldNombreHorario;
-    private javax.swing.JTextField JTextFieldNombrePasante;
-    private javax.swing.JTextField JTextFieldNumePupitres;
-    private javax.swing.JTextField JTextFieldNumeroComputadoras;
-    private javax.swing.JTextField JTextFieldNumeroMicrofonos;
-    private javax.swing.JTextField JTextFieldNumeroParlantes;
-    private javax.swing.JTextField JTextFieldNumeroVentiladores;
-    private javax.swing.JTextField JTextFieldRutaImagen;
+    public javax.swing.JTextField JTextFieldNombreHorario;
+    public javax.swing.JTextField JTextFieldNombrePasante;
+    public javax.swing.JTextField JTextFieldNumePupitres;
+    public javax.swing.JTextField JTextFieldNumeroComputadoras;
+    public javax.swing.JTextField JTextFieldNumeroMicrofonos;
+    public javax.swing.JTextField JTextFieldNumeroParlantes;
+    public javax.swing.JTextField JTextFieldNumeroVentiladores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBoxCrearHorario;
@@ -1706,37 +1495,28 @@ int i = JOptionPane.showConfirmDialog((Component)evt.getSource(),
     private javax.swing.JCheckBox jCheckBoxViernes;
     private javax.swing.JComboBox<String> jComboBoxCODIGOAULA;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel27;
+    public static javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelNombreHorario;
+    public static javax.swing.JLabel jLabelNombreHorario;
     private javax.swing.JLabel jLabelNombrePasante;
     private javax.swing.JLabel jLabelNumeroComputadora;
     private javax.swing.JLabel jLabelNumeroMicrofonos;
     private javax.swing.JLabel jLabelNumeroParlantes;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAtributosAuditorio;
     private javax.swing.JPanel jPanelAtributosAulaGrande;

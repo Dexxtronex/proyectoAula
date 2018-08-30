@@ -44,6 +44,8 @@ public class JFrameEditarAula extends javax.swing.JFrame {
     private int id = 0;
     public JFrameEditarAula() {
         initComponents();
+                setLocationRelativeTo(null);
+
         cargarComboBoxPaqueteDias();
        // deshabilitarPanelLaboratorio();
         jLabelNombreHorario.setVisible(false);
