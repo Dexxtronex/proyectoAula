@@ -44,7 +44,6 @@ paquetediasDAO objPaqueteDao= null;
     public JFrameNuevaReservacion() {
         initComponents();        setLocationRelativeTo(null);
 
-        deshabilitarPanelLaboratorio();
         jPanelAtributosExtras2.setEnabled(false);
         jPanelAtributosAuditorio.setEnabled(false);
         jPanelAtributosAulaGrande.setEnabled(false);
@@ -55,7 +54,7 @@ paquetediasDAO objPaqueteDao= null;
                  jPanelDias.setEnabled(false);
                          jCheckBoxCrearHorario.setEnabled(false);
                          deshabilitar_Reservacion();
-
+                        
        cargarComboBox();
         
        
@@ -191,19 +190,6 @@ paquetediasDAO objPaqueteDao= null;
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPanelAtributosExtras2 = new javax.swing.JPanel();
-        JTextFieldNumeroComputadoras = new javax.swing.JTextField();
-        jLabelNumeroComputadora = new javax.swing.JLabel();
-        jLabelNombrePasante = new javax.swing.JLabel();
-        JTextFieldNombrePasante = new javax.swing.JTextField();
-        jPanelAtributosAulaGrande = new javax.swing.JPanel();
-        jCheckBoxProyector1 = new javax.swing.JCheckBox();
-        jCheckBoxTela_Proyector1 = new javax.swing.JCheckBox();
-        jPanelAtributosAuditorio = new javax.swing.JPanel();
-        JTextFieldNumeroParlantes = new javax.swing.JTextField();
-        jLabelNumeroParlantes = new javax.swing.JLabel();
-        JTextFieldNumeroMicrofonos = new javax.swing.JTextField();
-        jLabelNumeroMicrofonos = new javax.swing.JLabel();
         JTextFieldHora_Fin = new javax.swing.JTextField();
         JTextFieldHora_Inicio = new javax.swing.JTextField();
         JTextFieldNumeroVentiladores = new javax.swing.JTextField();
@@ -230,8 +216,22 @@ paquetediasDAO objPaqueteDao= null;
         JTextFieldCapa_Pizarra = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanelAtributosExtras2 = new javax.swing.JPanel();
+        JTextFieldNumeroComputadoras = new javax.swing.JTextField();
+        jLabelNumeroComputadora = new javax.swing.JLabel();
+        jLabelNombrePasante = new javax.swing.JLabel();
+        JTextFieldNombrePasante = new javax.swing.JTextField();
+        jPanelAtributosAulaGrande = new javax.swing.JPanel();
+        jCheckBoxProyector1 = new javax.swing.JCheckBox();
+        jCheckBoxTela_Proyector1 = new javax.swing.JCheckBox();
+        jPanelAtributosAuditorio = new javax.swing.JPanel();
+        JTextFieldNumeroParlantes = new javax.swing.JTextField();
+        jLabelNumeroParlantes = new javax.swing.JLabel();
+        JTextFieldNumeroMicrofonos = new javax.swing.JTextField();
+        jLabelNumeroMicrofonos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -372,96 +372,6 @@ paquetediasDAO objPaqueteDao= null;
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelAtributosExtras2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelAtributosExtras2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        JTextFieldNumeroComputadoras.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldNumeroComputadoras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldNumeroComputadorasActionPerformed(evt);
-            }
-        });
-        JTextFieldNumeroComputadoras.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JTextFieldNumeroComputadorasKeyTyped(evt);
-            }
-        });
-        jPanelAtributosExtras2.add(JTextFieldNumeroComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
-
-        jLabelNumeroComputadora.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabelNumeroComputadora.setText("Numero Computadoras:");
-        jPanelAtributosExtras2.add(jLabelNumeroComputadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, -1));
-
-        jLabelNombrePasante.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabelNombrePasante.setText("Nombre Pasante");
-        jPanelAtributosExtras2.add(jLabelNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
-
-        JTextFieldNombrePasante.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldNombrePasante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldNombrePasanteActionPerformed(evt);
-            }
-        });
-        jPanelAtributosExtras2.add(JTextFieldNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
-
-        jPanel5.add(jPanelAtributosExtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
-
-        jPanelAtributosAulaGrande.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelAtributosAulaGrande.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jCheckBoxProyector1.setText(" Proyector");
-        jCheckBoxProyector1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxProyector1ActionPerformed(evt);
-            }
-        });
-        jPanelAtributosAulaGrande.add(jCheckBoxProyector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
-
-        jCheckBoxTela_Proyector1.setText("Tela Proyector");
-        jPanelAtributosAulaGrande.add(jCheckBoxTela_Proyector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
-
-        jPanel5.add(jPanelAtributosAulaGrande, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
-
-        jPanelAtributosAuditorio.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelAtributosAuditorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        JTextFieldNumeroParlantes.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldNumeroParlantes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldNumeroParlantesActionPerformed(evt);
-            }
-        });
-        JTextFieldNumeroParlantes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JTextFieldNumeroParlantesKeyTyped(evt);
-            }
-        });
-        jPanelAtributosAuditorio.add(JTextFieldNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 260, -1));
-
-        jLabelNumeroParlantes.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabelNumeroParlantes.setText("Numero Parlantes:");
-        jPanelAtributosAuditorio.add(jLabelNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, -1));
-
-        JTextFieldNumeroMicrofonos.setDisabledTextColor(new java.awt.Color(1, 1, 1));
-        JTextFieldNumeroMicrofonos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldNumeroMicrofonosActionPerformed(evt);
-            }
-        });
-        JTextFieldNumeroMicrofonos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                JTextFieldNumeroMicrofonosKeyTyped(evt);
-            }
-        });
-        jPanelAtributosAuditorio.add(JTextFieldNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 260, -1));
-
-        jLabelNumeroMicrofonos.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabelNumeroMicrofonos.setText("Numero Microfonos:");
-        jPanelAtributosAuditorio.add(jLabelNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
-
-        jPanel5.add(jPanelAtributosAuditorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
-
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 420, -1));
 
         JTextFieldHora_Fin.setDisabledTextColor(new java.awt.Color(1, 1, 1));
@@ -525,11 +435,11 @@ paquetediasDAO objPaqueteDao= null;
                 JComboBoxTipoAulaKeyPressed(evt);
             }
         });
-        getContentPane().add(JComboBoxTipoAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 250, -1));
+        getContentPane().add(JComboBoxTipoAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 250, -1));
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel7.setText("TIPO AULA");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, 120, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 120, 30));
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel6.setText("CAPACIDAD ALUMNO:");
@@ -769,6 +679,97 @@ paquetediasDAO objPaqueteDao= null;
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fondos/from_Nueva_Reservacion_ProyectoPOOParcial2.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 670));
+
+        jPanelAtributosExtras2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAtributosExtras2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JTextFieldNumeroComputadoras.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNumeroComputadoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNumeroComputadorasActionPerformed(evt);
+            }
+        });
+        JTextFieldNumeroComputadoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroComputadorasKeyTyped(evt);
+            }
+        });
+        jPanelAtributosExtras2.add(JTextFieldNumeroComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, -1));
+
+        jLabelNumeroComputadora.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroComputadora.setText("Numero Computadoras:");
+        jPanelAtributosExtras2.add(jLabelNumeroComputadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, -1));
+
+        jLabelNombrePasante.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNombrePasante.setText("Nombre Pasante");
+        jPanelAtributosExtras2.add(jLabelNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
+
+        JTextFieldNombrePasante.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNombrePasante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNombrePasanteActionPerformed(evt);
+            }
+        });
+        jPanelAtributosExtras2.add(JTextFieldNombrePasante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 130, -1));
+
+        getContentPane().add(jPanelAtributosExtras2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 150, 300, 90));
+
+        jPanelAtributosAulaGrande.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAtributosAulaGrande.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCheckBoxProyector1.setText(" Proyector");
+        jCheckBoxProyector1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxProyector1ActionPerformed(evt);
+            }
+        });
+        jPanelAtributosAulaGrande.add(jCheckBoxProyector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 90, -1));
+
+        jCheckBoxTela_Proyector1.setText("Tela Proyector");
+        jPanelAtributosAulaGrande.add(jCheckBoxTela_Proyector1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        getContentPane().add(jPanelAtributosAulaGrande, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 260, 300, 50));
+
+        jPanelAtributosAuditorio.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAtributosAuditorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JTextFieldNumeroParlantes.setEditable(false);
+        JTextFieldNumeroParlantes.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNumeroParlantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNumeroParlantesActionPerformed(evt);
+            }
+        });
+        JTextFieldNumeroParlantes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroParlantesKeyTyped(evt);
+            }
+        });
+        jPanelAtributosAuditorio.add(JTextFieldNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, -1));
+
+        jLabelNumeroParlantes.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroParlantes.setText("Numero Parlantes:");
+        jPanelAtributosAuditorio.add(jLabelNumeroParlantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 146, -1));
+
+        JTextFieldNumeroMicrofonos.setEditable(false);
+        JTextFieldNumeroMicrofonos.setDisabledTextColor(new java.awt.Color(1, 1, 1));
+        JTextFieldNumeroMicrofonos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldNumeroMicrofonosActionPerformed(evt);
+            }
+        });
+        JTextFieldNumeroMicrofonos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextFieldNumeroMicrofonosKeyTyped(evt);
+            }
+        });
+        jPanelAtributosAuditorio.add(JTextFieldNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 130, -1));
+
+        jLabelNumeroMicrofonos.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabelNumeroMicrofonos.setText("Numero Microfonos:");
+        jPanelAtributosAuditorio.add(jLabelNumeroMicrofonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, -1));
+
+        getContentPane().add(jPanelAtributosAuditorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 330, 300, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1360,7 +1361,15 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
                 
 }
     private void cargarComponentes(ArrayList<Aula> lista){
-            Image imagenPresentar=null;
+        JTextFieldNombrePasante.setText("");
+        JTextFieldNumeroComputadoras.setText("");
+        JTextFieldNumeroParlantes.setText("");
+        JTextFieldNumeroMicrofonos.setText("");
+        jCheckBoxTela_Proyector1.setSelected(false);
+                jCheckBoxProyector1.setSelected(false);
+
+        
+        Image imagenPresentar=null;
      for(int i = 0; i <lista.size(); i++){
          if(lista.get(i).getDias() == null){
              System.out.println("esta vacio");
@@ -1388,36 +1397,37 @@ int dia = jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
         System.out.println("tipo de aula"+lista.get(i).toString());
 
         if(lista.get(i).getTipoAula().equals("Laboratorio")==true){
-        jPanelAtributosAuditorio.setVisible(false);
-        jPanelAtributosAulaGrande.setVisible(false);
-                jPanelAtributosExtras2.setVisible(true);
+        jPanelAtributosAuditorio.setEnabled(false);
+        jPanelAtributosAulaGrande.setEnabled(false);
+                jPanelAtributosExtras2.setEnabled(false);
 
         JTextFieldNombrePasante.setText((lista.get(i).getNombrePasante()));
         JTextFieldNumeroComputadoras.setText((Integer.toString(lista.get(i).getNumero_Computadoras())));
          }
          else if(lista.get(i).getTipoAula().equals("Aula Grande")==true){
 
-             jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(false);
-         jPanelAtributosAulaGrande.setVisible(true);
+             jPanelAtributosExtras2.setEnabled(false);
+        jPanelAtributosAuditorio.setEnabled(false);
+         jPanelAtributosAulaGrande.setEnabled(false);
          jCheckBoxProyector1.setSelected((lista.get(i).isProyector()));
                   jCheckBoxTela_Proyector1.setSelected((lista.get(i).isTela_Proyector()));
 
          }
          else  if(lista.get(i).getTipoAula().equals("Auditorio")==true){
 
-             jPanelAtributosExtras2.setVisible(false);
-         jPanelAtributosAulaGrande.setVisible(false);
-                 jPanelAtributosAuditorio.setVisible(true);
+             jPanelAtributosExtras2.setEnabled(false);
+         jPanelAtributosAulaGrande.setEnabled(false);
+                 jPanelAtributosAuditorio.setEnabled(false);
 
          JTextFieldNumeroParlantes.setText(Integer.toString(lista.get(i).getCantidad_Parlantes()));
         JTextFieldNumeroMicrofonos.setText(Integer.toString(lista.get(i).getCantidad_Microfonos()));
 
          }
          else{
-             jPanelAtributosExtras2.setVisible(false);
-        jPanelAtributosAuditorio.setVisible(false);
-         jPanelAtributosAulaGrande.setVisible(false);
+             jPanelAtributosExtras2.setEnabled(false);
+         jPanelAtributosAulaGrande.setEnabled(false);
+                 jPanelAtributosAuditorio.setEnabled(false);
+
          }
         
         
